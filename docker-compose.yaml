@@ -1,0 +1,78 @@
+name: ai-live-emotions-decode
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-app}
+      POSTGRES_DB: ${POSTGRES_DB:-emotions}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Official minio/minio images were removed from Docker Hub (Oct 2025),
+  # so we use the frozen Bitnami build. It creates MINIO_DEFAULT_BUCKETS on start.
+  minio:
+    image: bitnamilegacy/minio:2025.7.23-debian-12-r5
+    container_name: minio
+    restart: unless-stopped
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin}
+      MINIO_DEFAULT_BUCKETS: ${MINIO_BUCKET:-frames}
+    ports:
+      - "${MINIO_API_PORT:-9000}:9000" # S3 API
+    volumes:
+      - minio_data:/bitnami/minio/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Bitnami's MinIO build has no embedded web console, it ships separately.
+  minio-console:
+    image: bitnamilegacy/minio-object-browser:2.0.2-debian-12-r4
+    container_name: minio-console
+    restart: unless-stopped
+    command: server
+    environment:
+      CONSOLE_MINIO_SERVER: http://minio:9000
+    ports:
+      - "${MINIO_CONSOLE_PORT:-9001}:9090"
+    depends_on:
+      minio:
+        condition: service_healthy
+
+  rabbitmq:
+    image: rabbitmq:4.1-management-alpine
+    container_name: rabbitmq
+    restart: unless-stopped
+    hostname: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-guest}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-guest}
+    ports:
+      - "${RABBITMQ_PORT:-5672}:5672"             # AMQP
+      - "${RABBITMQ_MANAGEMENT_PORT:-15672}:15672" # Management UI
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+
+volumes:
+  postgres_data:
+  minio_data:
+  rabbitmq_data:
