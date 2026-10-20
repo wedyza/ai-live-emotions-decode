@@ -8,9 +8,8 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
-    "aio-pika>=10.1.1",
+    "common",
     "av>=19.0.1",
-    "boto3>=1.43.114",
     "fastapi[all]>=0.143.2",
     "pillow>=12.3.0",
     "pydantic-settings>=2.16.0",
@@ -22,3 +21,6 @@ backend = "backend:main"
 [build-system]
 requires = ["uv_build>=0.12.21,<0.13.0"]
 build-backend = "uv_build"
+
+[tool.uv.sources]
+common = { workspace = true }

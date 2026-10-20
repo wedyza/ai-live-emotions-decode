@@ -1,0 +1,25 @@
+# Виртуальный корень workspace: своего пакета нет, он только объединяет сервисы и общие
+# библиотеки под одним uv.lock и одним .venv.
+[tool.uv.workspace]
+members = [
+    "libs/common",
+    "backend",
+    "cv-service",
+    "ai-service",
+    "notification-service",
+]
+
+[dependency-groups]
+dev = [
+    "basedpyright>=1.40.2",
+    "boto3-stubs-lite[s3]>=1.43.115",
+]
+
+[tool.basedpyright]
+include = [
+    "libs/common/src",
+    "backend/src",
+    "cv-service/src",
+    "ai-service/src",
+    "notification-service/src",
+]

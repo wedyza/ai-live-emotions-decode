@@ -1,20 +1,23 @@
+from typing import ClassVar
+
+from common.settings import RabbitSettings, S3Settings
+from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+    # BACKEND_TARGET_FPS=10, BACKEND_S3__BUCKET=frames, BACKEND_RABBIT__URL=amqp://...
+    model_config: ClassVar[SettingsConfigDict] = SettingsConfigDict(
+        env_prefix="BACKEND_",
+        env_nested_delimiter="__",
+        env_file=".env",
+        extra="ignore",
+    )
 
-    # S3 / MinIO
-    s3_endpoint_url: str = "http://localhost:9000"
-    minio_root_user: str = "minioadmin"
-    minio_root_password: str = "minioadmin"
-    minio_bucket: str = "frames"
+    rabbit: RabbitSettings = Field(default_factory=RabbitSettings)
+    s3: S3Settings = Field(default_factory=S3Settings)
 
-    # RabbitMQ
-    rabbitmq_url: str = "amqp://guest:guest@localhost:5672/"
-    face_capture_queue: str = "do_face_capture"
-
-    # Video processing
+    # Обработка видео
     target_fps: float = 10.0
     max_frame_height: int = 480
     jpeg_quality: int = 85

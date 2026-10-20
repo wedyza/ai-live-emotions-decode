@@ -1,0 +1,19 @@
+[project]
+name = "common"
+version = "0.1.0"
+description = "Shared broker, storage, settings and message contracts for all services"
+readme = "README.md"
+authors = [
+    { name = "Kostya Gavrilov", email = "wedyza@mail.ru" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "aio-pika>=10.1.1",
+    "boto3>=1.43.114",
+    "pydantic>=2.12",
+    "pydantic-settings>=2.16.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.21,<0.13.0"]
+build-backend = "uv_build"

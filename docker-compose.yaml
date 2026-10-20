@@ -1,5 +1,8 @@
 name: ai-live-emotions-decode
 
+# Пока данные хранятся в tmpfs (в RAM) с ограничением размера: на диск ничего не пишется,
+# а при удалении или перезапуске контейнера всё стирается.
+
 services:
   postgres:
     image: postgres:17-alpine
@@ -11,16 +14,16 @@ services:
       POSTGRES_DB: ${POSTGRES_DB:-emotions}
     ports:
       - "${POSTGRES_PORT:-5432}:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+    tmpfs:
+      - /var/lib/postgresql/data:size=512m
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 5s
       timeout: 5s
       retries: 10
 
-  # Official minio/minio images were removed from Docker Hub (Oct 2025),
-  # so we use the frozen Bitnami build. It creates MINIO_DEFAULT_BUCKETS on start.
+  # Официальные образы minio/minio удалены из Docker Hub (октябрь 2025),
+  # поэтому используем замороженную сборку Bitnami. При старте она создаёт MINIO_DEFAULT_BUCKETS.
   minio:
     image: bitnamilegacy/minio:2025.7.23-debian-12-r5
     container_name: minio
@@ -31,15 +34,16 @@ services:
       MINIO_DEFAULT_BUCKETS: ${MINIO_BUCKET:-frames}
     ports:
       - "${MINIO_API_PORT:-9000}:9000" # S3 API
-    volumes:
-      - minio_data:/bitnami/minio/data
+    tmpfs:
+      - /bitnami/minio/data:size=2g
+      - /certs:size=1m
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
       interval: 5s
       timeout: 5s
       retries: 10
 
-  # Bitnami's MinIO build has no embedded web console, it ships separately.
+  # В сборке MinIO от Bitnami нет встроенной веб-консоли, она поставляется отдельно.
   minio-console:
     image: bitnamilegacy/minio-object-browser:2.0.2-debian-12-r4
     container_name: minio-console
@@ -63,16 +67,11 @@ services:
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-guest}
     ports:
       - "${RABBITMQ_PORT:-5672}:5672"             # AMQP
-      - "${RABBITMQ_MANAGEMENT_PORT:-15672}:15672" # Management UI
-    volumes:
-      - rabbitmq_data:/var/lib/rabbitmq
+      - "${RABBITMQ_MANAGEMENT_PORT:-15672}:15672" # Веб-интерфейс управления
+    tmpfs:
+      - /var/lib/rabbitmq:size=512m
     healthcheck:
       test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
       interval: 10s
       timeout: 10s
       retries: 10
-
-volumes:
-  postgres_data:
-  minio_data:
-  rabbitmq_data:

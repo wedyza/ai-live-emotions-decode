@@ -2,35 +2,31 @@ import asyncio
 import shutil
 import tempfile
 import uuid
+from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, UploadFile, status
 from pydantic import BaseModel
 
-from backend.broker import Broker
-from backend.config import settings
-from backend.storage import FrameStorage
-from backend.video import InvalidVideoError, extract_frames
+from common.messages import FaceCaptureMessage
 
-broker = Broker()
-storage = FrameStorage()
+from backend.broker import publisher, rabbit
+from backend.config import settings
+from backend.frames import store_frame
+from backend.video import InvalidVideoError, extract_frames
+from backend.webcam import router as webcam_router
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
-    await broker.connect()
+async def lifespan(_app: FastAPI) -> AsyncGenerator[None]:
+    await rabbit.connect()
     yield
-    await broker.close()
+    await rabbit.close()
 
 
 app = FastAPI(title="AI Live Emotions Decode", lifespan=lifespan)
-
-
-class StoredFrame(BaseModel):
-    frame_id: str
-    s3_key: str
-    timestamp_ms: int
+app.include_router(webcam_router)
 
 
 class VideoUploadResponse(BaseModel):
@@ -39,22 +35,17 @@ class VideoUploadResponse(BaseModel):
     frames_count: int
 
 
-def _process_video(path: Path, video_id: str) -> list[StoredFrame]:
-    """CPU/IO-bound part: decode, downscale and upload frames. Runs in a worker thread."""
-    stored = []
-    for frame in extract_frames(
-        path,
-        target_fps=settings.target_fps,
-        max_height=settings.max_frame_height,
-        jpeg_quality=settings.jpeg_quality,
-    ):
-        frame_id = f"{video_id}/{frame.index:06d}"
-        s3_key = f"{frame_id}.jpg"
-        storage.put_jpeg(s3_key, frame.jpeg)
-        stored.append(
-            StoredFrame(frame_id=frame_id, s3_key=s3_key, timestamp_ms=frame.timestamp_ms)
+def _process_video(path: Path, video_id: str) -> list[FaceCaptureMessage]:
+    """Тяжёлая часть (CPU/IO): декодирование, уменьшение и загрузка кадров. Выполняется в отдельном потоке."""
+    return [
+        store_frame(video_id, frame.index, frame.timestamp_ms, frame.jpeg)
+        for frame in extract_frames(
+            path,
+            target_fps=settings.target_fps,
+            max_height=settings.max_frame_height,
+            jpeg_quality=settings.jpeg_quality,
         )
-    return stored
+    ]
 
 
 @app.post(
@@ -78,10 +69,7 @@ async def upload_video(file: UploadFile) -> VideoUploadResponse:
         raise HTTPException(status.HTTP_422_UNPROCESSABLE_CONTENT, "video has no frames")
 
     for frame in frames:
-        await broker.publish(
-            settings.face_capture_queue,
-            {"video_id": video_id, **frame.model_dump()},
-        )
+        await publisher.publish(frame)
 
     return VideoUploadResponse(
         video_id=video_id, fps=settings.target_fps, frames_count=len(frames)

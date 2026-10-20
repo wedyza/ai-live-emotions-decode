@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webcam Capture</title>
+  <style>
+    :root {
+      --bg: #f6f7f9; --surface: #ffffff; --text: #1b1f24; --muted: #5d6673;
+      --border: #dde1e6; --accent: #2f6fed; --danger: #d64545; --ok: #1f8a4c;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111418; --surface: #1a1e24; --text: #e8eaed; --muted: #9aa3ae;
+        --border: #2c323a; --accent: #5b8ff9; --danger: #ef6b6b; --ok: #47c07d;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    main { max-width: 760px; margin: 0 auto; padding: 24px 16px; }
+    h1 { font-size: 20px; margin: 0 0 4px; }
+    .hint { color: var(--muted); margin: 0 0 16px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px;
+    }
+    video {
+      width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+      background: #000; border-radius: 8px;
+    }
+    .controls { display: flex; gap: 8px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
+    button {
+      font: inherit; border: 0; border-radius: 8px; padding: 8px 16px; cursor: pointer;
+      color: #fff; background: var(--accent);
+    }
+    button.stop { background: var(--danger); }
+    button:disabled { opacity: .5; cursor: default; }
+    .status { display: flex; align-items: center; gap: 6px; color: var(--muted); }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--muted); }
+    .dot.live { background: var(--danger); animation: pulse 1s infinite; }
+    @keyframes pulse { 50% { opacity: .3; } }
+    dl {
+      display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px;
+      margin: 16px 0 0; font-variant-numeric: tabular-nums;
+    }
+    dt { color: var(--muted); }
+    dd { margin: 0; overflow-wrap: anywhere; font-family: ui-monospace, monospace; font-size: 13px; }
+    .error { color: var(--danger); }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Запись с веб-камеры</h1>
+  <p class="hint">Кадры уходят на сервер с частотой <span id="fps"></span> к/с, высота до <span id="maxh"></span> px; каждый кадр сохраняется в MinIO и публикуется в RabbitMQ.</p>
+
+  <div class="card">
+    <video id="preview" autoplay muted playsinline></video>
+    <div class="controls">
+      <button id="start">Начать запись</button>
+      <button id="stop" class="stop" disabled>Остановить</button>
+      <span class="status"><span id="dot" class="dot"></span><span id="state">Не записывается</span></span>
+    </div>
+    <dl>
+      <dt>Сессия</dt><dd id="session">—</dd>
+      <dt>Отправлено</dt><dd id="sent">0</dd>
+      <dt>Сохранено</dt><dd id="saved">0</dd>
+      <dt>Последний кадр</dt><dd id="last">—</dd>
+    </dl>
+    <p id="error" class="error" hidden></p>
+  </div>
+</main>
+
+<script>
+  const TARGET_FPS = __TARGET_FPS__;
+  const MAX_FRAME_HEIGHT = __MAX_FRAME_HEIGHT__;
+  const JPEG_QUALITY = __JPEG_QUALITY__ / 100;
+  // Не копим кадры, если сервер не успевает.
+  const MAX_IN_FLIGHT = 5;
+
+  const $ = (id) => document.getElementById(id);
+  $("fps").textContent = TARGET_FPS;
+  $("maxh").textContent = MAX_FRAME_HEIGHT;
+
+  const video = $("preview");
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  let stream = null, ws = null, timer = null;
+  let sent = 0, saved = 0, inFlight = 0;
+
+  function showError(text) {
+    $("error").textContent = text;
+    $("error").hidden = !text;
+  }
+
+  function setRecording(on) {
+    $("start").disabled = on;
+    $("stop").disabled = !on;
+    $("dot").classList.toggle("live", on);
+    $("state").textContent = on ? "Идёт запись" : "Не записывается";
+  }
+
+  function captureFrame() {
+    if (!ws || ws.readyState !== WebSocket.OPEN || inFlight >= MAX_IN_FLIGHT) return;
+    if (!video.videoWidth) return;
+
+    const height = Math.min(video.videoHeight, MAX_FRAME_HEIGHT);
+    const width = Math.round(video.videoWidth * height / video.videoHeight / 2) * 2;
+    canvas.width = width;
+    canvas.height = height;
+    ctx.drawImage(video, 0, 0, width, height);
+
+    inFlight++;
+    canvas.toBlob((blob) => {
+      if (!blob || !ws || ws.readyState !== WebSocket.OPEN) { inFlight--; return; }
+      ws.send(blob);
+      $("sent").textContent = ++sent;
+    }, "image/jpeg", JPEG_QUALITY);
+  }
+
+  async function start() {
+    showError("");
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+    } catch (e) {
+      showError("Нет доступа к камере: " + e.message);
+      return;
+    }
+    video.srcObject = stream;
+    await video.play();
+
+    sent = saved = inFlight = 0;
+    $("sent").textContent = $("saved").textContent = "0";
+    $("last").textContent = $("session").textContent = "—";
+
+    const proto = location.protocol === "https:" ? "wss" : "ws";
+    ws = new WebSocket(`${proto}://${location.host}/ws/webcam`);
+    ws.onopen = () => {
+      setRecording(true);
+      timer = setInterval(captureFrame, 1000 / TARGET_FPS);
+    };
+    ws.onmessage = (event) => {
+      const msg = JSON.parse(event.data);
+      if (msg.session_id) $("session").textContent = msg.session_id;
+      if (msg.frame_id) {
+        inFlight = Math.max(0, inFlight - 1);
+        $("saved").textContent = ++saved;
+        $("last").textContent = `${msg.frame_id} (${(msg.timestamp_ms / 1000).toFixed(1)} c)`;
+      }
+      if (msg.skipped) inFlight = Math.max(0, inFlight - 1);
+      if (msg.error) {
+        inFlight = Math.max(0, inFlight - 1);
+        showError(msg.error);
+      }
+    };
+    ws.onclose = () => stop();
+    ws.onerror = () => showError("Соединение с сервером прервано");
+  }
+
+  function stop() {
+    clearInterval(timer);
+    timer = null;
+    if (ws) { ws.onclose = null; ws.close(); ws = null; }
+    if (stream) { stream.getTracks().forEach((t) => t.stop()); stream = null; }
+    video.srcObject = null;
+    setRecording(false);
+  }
+
+  $("start").addEventListener("click", start);
+  $("stop").addEventListener("click", stop);
+</script>
+</body>
+</html>
