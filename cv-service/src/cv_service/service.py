@@ -8,6 +8,7 @@ from common.storage import S3Storage
 
 from cv_service.config import settings
 from cv_service.detector import detect_faces
+from model.yunet import get_yunet
 
 logger = logging.getLogger(__name__)
 
@@ -21,11 +22,12 @@ class FaceCaptureHandler:
     def __init__(self, storage: S3Storage, publisher: Publisher) -> None:
         self._storage = storage
         self._publisher = publisher
+        self._model = get_yunet()
 
     async def __call__(self, message: FaceCaptureMessage) -> None:
         frame = message.frame
         jpeg = await self._storage.get_async(frame.s3_key)
-        boxes = await asyncio.to_thread(detect_faces, jpeg)
+        boxes = await asyncio.to_thread(detect_faces, jpeg, self._model)
         if not boxes:
             logger.debug("no faces on %s", frame.frame_id)
             return

@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     # Детекция лиц нагружает CPU: не даём RabbitMQ присылать слишком много кадров разом.
     rabbit: RabbitSettings = Field(default_factory=lambda: RabbitSettings(prefetch_count=4))
     s3: S3Settings = Field(default_factory=S3Settings)
+    model_path: str = 'cv-service/src/model/weights/face_detection_yunet_2023mar.onnx'
 
 
 settings = Settings()

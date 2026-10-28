@@ -43,5 +43,7 @@ tmp/
 .DS_Store
 Thumbs.db
 
-.typed
+*.typed
 .python-version
+
+datasets

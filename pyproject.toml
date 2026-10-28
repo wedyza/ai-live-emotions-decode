@@ -15,8 +15,20 @@ dev = [
     "boto3-stubs-lite[s3]>=1.43.115",
 ]
 
-[tool.basedpyright]
+# [tool.pyright], а не [tool.basedpyright]: эту секцию читают и basedpyright, и Pylance в IDE.
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
 include = [
+    "libs/common/src",
+    "backend/src",
+    "cv-service/src",
+    "ai-service/src",
+    "notification-service/src",
+]
+# Пакеты workspace стоят в .venv как editable (.pth), IDE их не всегда подхватывает,
+# поэтому исходники всех пакетов явно добавлены в пути поиска импортов.
+extraPaths = [
     "libs/common/src",
     "backend/src",
     "cv-service/src",
