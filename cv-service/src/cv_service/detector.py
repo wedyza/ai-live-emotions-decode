@@ -1,4 +1,5 @@
 import logging
+import threading
 from typing import cast
 
 import cv2 as cv
@@ -8,6 +9,7 @@ from common.messages import BoundingBox
 from model.yunet import YuNet
 
 logger = logging.getLogger(__name__)
+_model_lock = threading.Lock()
 
 
 def detect_faces(jpeg: bytes, model: YuNet) -> list[BoundingBox]:
@@ -19,9 +21,11 @@ def detect_faces(jpeg: bytes, model: YuNet) -> list[BoundingBox]:
 
     height, width = cast(tuple[int, int], image.shape[:2])
     # YuNet требует, чтобы входной размер совпадал с размером кадра.
-    model.setInputSize([width, height])  # pyright: ignore[reportUnknownMemberType]
-    # Строка на лицо: x, y, w, h, 5 ключевых точек (x, y), score.
-    faces = cast(list[list[float]], model.infer(image).tolist())  # pyright: ignore[reportUnknownMemberType]
+    # Input-size mutation and forward must be one atomic operation.
+    with _model_lock:
+        model.setInputSize([width, height])  # pyright: ignore[reportUnknownMemberType]
+        # Строка на лицо: x, y, w, h, 5 ключевых точек (x, y), score.
+        faces = cast(list[list[float]], model.infer(image).tolist())  # pyright: ignore[reportUnknownMemberType]
     logger.info("YuNet: %d faces on %dx%d frame", len(faces), width, height)
 
     boxes: list[BoundingBox] = []
@@ -29,6 +33,8 @@ def detect_faces(jpeg: bytes, model: YuNet) -> list[BoundingBox]:
         x1, y1 = max(int(face[0]), 0), max(int(face[1]), 0)
         x2 = min(int(face[0] + face[2]), width)
         y2 = min(int(face[1] + face[3]), height)
+        if x2 <= x1 or y2 <= y1:
+            continue
         box = BoundingBox(x=x1, y=y1, width=x2 - x1, height=y2 - y1)
         logger.info(
             "  face #%d: x=%d y=%d w=%d h=%d score=%.3f",

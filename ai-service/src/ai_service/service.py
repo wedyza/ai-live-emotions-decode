@@ -6,7 +6,7 @@ from common.lifecycle import run_consumer
 from common.messages import AlertMessage, AnalyzeMessage
 from common.storage import S3Storage
 
-from ai_service.analyzer import analyze_emotions
+from ai_service.analyzer import analyze_emotions, _recognizer
 from ai_service.config import settings
 
 logger = logging.getLogger(__name__)
@@ -34,6 +34,8 @@ class AnalyzeHandler:
 
 
 async def run() -> None:
+    # Fail clearly on missing/invalid weights before accepting queue jobs.
+    await asyncio.to_thread(_recognizer)
     connection = RabbitConnection(settings.rabbit)
     handler = AnalyzeHandler(S3Storage(settings.s3), Publisher(connection))
     await run_consumer(connection, AnalyzeMessage, handler)

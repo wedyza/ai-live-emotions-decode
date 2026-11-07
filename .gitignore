@@ -52,3 +52,16 @@ datasets
 reports/**/*.pth
 reports/**/*.onnx
 reports/**/*.onnx.data
+
+# Personal training environments and generated exports
+.venv-*/
+dataset/
+*.zip
+*.pth
+reports/
+# Publish only the small documented experiment summary.
+!reports/
+reports/*
+!reports/experiment_summary.json
+patch_backups/
+portability_update/
