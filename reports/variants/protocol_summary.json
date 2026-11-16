@@ -1,0 +1,33 @@
+{
+  "seed": 77001,
+  "previous_test_reused": false,
+  "new_test": 750,
+  "test_by_class": {
+    "anger": 150,
+    "contempt": 0,
+    "disgust": 0,
+    "fear": 0,
+    "happiness": 150,
+    "neutral": 150,
+    "sadness": 150,
+    "surprise": 150
+  },
+  "unused_pool_by_class": {
+    "anger": 516,
+    "contempt": 0,
+    "disgust": 0,
+    "fear": 0,
+    "happiness": 5367,
+    "neutral": 5086,
+    "sadness": 1060,
+    "surprise": 973
+  },
+  "roles": {
+    "train": 3324,
+    "selection": 1094,
+    "calibration": 819,
+    "policy": 827,
+    "test": 750
+  },
+  "warning": "Fresh relative to project adaptations/evaluations, not guaranteed unseen subjects or HSEmotion pretraining. No fresh rare-class evaluation."
+}

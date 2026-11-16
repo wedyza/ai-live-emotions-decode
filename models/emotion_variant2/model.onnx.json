@@ -1,0 +1,43 @@
+{
+  "classes": [
+    "anger",
+    "contempt",
+    "disgust",
+    "fear",
+    "happiness",
+    "neutral",
+    "sadness",
+    "surprise"
+  ],
+  "img_size": 224,
+  "mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "input": "RGB",
+  "resize": "PIL bilinear",
+  "crop": "yunet5_similarity_v1",
+  "batch_size": 1,
+  "output": "logits",
+  "adaptation": "Frozen image classifier plus learned landmark fusion branch",
+  "model_variant": "variant2",
+  "geometry_norm": "yunet5_eye_frame_v1",
+  "geometry_size": 10,
+  "input_names": [
+    "image",
+    "landmarks"
+  ],
+  "geometry_branch": [
+    10,
+    32,
+    16
+  ],
+  "fusion_features": 1296,
+  "image_head_frozen": true
+}

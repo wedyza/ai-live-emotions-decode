@@ -16,7 +16,8 @@ class Settings(BaseSettings):
     )
 
     # Selected on PublicTest, calibrated separately; PrivateTest is evaluation only.
-    emotion_model: Literal["reliable", "experimental", "pretrained"] = "reliable"
+    emotion_model: Literal["reliable", "fusion", "experimental", "pretrained"] = "reliable"
+    fusion_path: str = "models/emotion_variant2"
     reliability_path: str = "models/emotion_reliable"
     emotion_model_path: str = "models/emotion_experiment/model.onnx"
 

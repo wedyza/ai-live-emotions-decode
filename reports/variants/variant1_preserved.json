@@ -1,0 +1,26 @@
+{
+  "models/emotion_consensus/model.onnx": {
+    "unchanged": true,
+    "sha256": "0e86fc90af6969ff53c6941814c06e83c20f1cb0c4911deb534faeb8e30ec8dc"
+  },
+  "models/emotion_consensus/model.onnx.json": {
+    "unchanged": true,
+    "sha256": "4ed014514a0b726462f6a2fcbffb185f7f9a2fb685c221e11d2ba954c11783c6"
+  },
+  "models/emotion_consensus/policy.json": {
+    "unchanged": true,
+    "sha256": "1f386a2b9b893ad5010b04dd16c54f9ce74e0b669b96698e68c41d5376c974f8"
+  },
+  "models/emotion_reliable/model.onnx": {
+    "unchanged": true,
+    "sha256": "e5ae3970d28ba246ff1c1513f8763bb90fefd732e5b2b85b21bcfde9bb2217e4"
+  },
+  "models/emotion_reliable/model.onnx.json": {
+    "unchanged": true,
+    "sha256": "75a1efd72c7d4af57f6398df459988fbf8d41d30e7d0a769a29fb64dd42f3ffc"
+  },
+  "models/emotion_reliable/policy.json": {
+    "unchanged": true,
+    "sha256": "113e1f2f04f03935168ad57acebc2316ff2511a02dd37952bbf479d70398d5a5"
+  }
+}

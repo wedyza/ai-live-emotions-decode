@@ -1,22 +1,15 @@
-# Вариант 1 — эталонная архитектура
+# Вариант 2 — эксперимент: изображение и точки лица
 
-Ветка `sergej/variant1-reference`. Начните с `BRANCH_SUMMARY_RU.md`.
-
-Точки YuNet используются для выравнивания; классификатор получает только RGB-фотографию. В этой ветке нет второго числового входа, Fusion-модели и MLP координат. Веса runtime включены. Фотографии, датасеты, виртуальные окружения и секреты в Git не загружаются.
+Ветка `sergej/variant2-experiment` основана на `sergej/variant1-reference`.
 
 ```bash
 uv sync --all-packages --no-dev --python 3.12 --locked
-uv run --no-sync python tools/project.py check --model variant1
-uv run --no-sync python tools/project.py infra
-uv run --no-sync python tools/project.py start --model variant1
-```
-
-Откройте http://localhost:8000/docs → POST /videos. Для более осторожного профиля используйте `--model reliable`; default сохранён reliable. Для контролируемого сравнения архитектур `variant1` является псевдонимом последней image-only модели expanded.
-
-```bash
+uv run --no-sync python tools/project.py check --model variant2
 uv run --no-sync python -m unittest discover -s tests -v
+uv run --no-sync python tools/project.py infra
+uv run --no-sync python tools/project.py start --model variant2
 ```
 
-Не запускайте одновременно несколько копий Python-сервисов на тех же очередях/портах. Ctrl+C останавливает сервисы, Docker остаётся работать. Для приложения PyTorch и тренировочные изображения не требуются. Данные для повторения FER-экспериментов скачиваются отдельной командой из `CONSENSUS_REPORT_RU.md`. Исторические упоминания «комплектного датасета» в отчётах относятся к архивным сборкам, а не к этой Git-ветке.
+Откройте http://localhost:8000/docs → POST /videos. Для парного сравнения используйте `--model variant1`. Без параметра сохраняется консервативный reliable; эксперимент включается явно. Веса ONNX включены, PyTorch и тренировочные изображения для запуска не нужны. Требуются Python3.12, uv и Docker для инфраструктуры. Фотографии, виртуальные окружения и секреты исключены из Git.
 
-Результаты описывают категории видимой мимики, не внутреннее состояние человека. Модели ошибаются; precision среди ответов всегда сопровождается coverage. Main/master этой работой не обновлялись.
+Читайте `BRANCH_SUMMARY_RU.md` и `VARIANTS_COMPARISON_RU.md`. Преимущество дополнительных координат по имеющемуся независимому контролю не установлено. Основная ветка не изменялась; решение о слиянии принимает команда.

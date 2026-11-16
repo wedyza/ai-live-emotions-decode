@@ -1,0 +1,96 @@
+{
+  "variant1_selection_macro_f1": 0.861907738310542,
+  "variant2_selected": {
+    "score": 0.8708011566463641,
+    "reg": 0.0,
+    "step": 200
+  },
+  "constant_control_selected": {
+    "score": 0.8665135631467109,
+    "reg": 0.0,
+    "step": 500
+  },
+  "history": [
+    {
+      "kind": "actual",
+      "regularization": 0.0,
+      "step": 200,
+      "selection_macro_f1": 0.8708011566463641
+    },
+    {
+      "kind": "actual",
+      "regularization": 0.0,
+      "step": 500,
+      "selection_macro_f1": 0.864591605022526
+    },
+    {
+      "kind": "actual",
+      "regularization": 0.1,
+      "step": 200,
+      "selection_macro_f1": 0.8664620871889944
+    },
+    {
+      "kind": "actual",
+      "regularization": 0.1,
+      "step": 500,
+      "selection_macro_f1": 0.865913938829825
+    },
+    {
+      "kind": "actual",
+      "regularization": 1.0,
+      "step": 200,
+      "selection_macro_f1": 0.8673041766057736
+    },
+    {
+      "kind": "actual",
+      "regularization": 1.0,
+      "step": 500,
+      "selection_macro_f1": 0.8654394203752378
+    },
+    {
+      "kind": "constant_control",
+      "regularization": 0.0,
+      "step": 200,
+      "selection_macro_f1": 0.8651768708345612
+    },
+    {
+      "kind": "constant_control",
+      "regularization": 0.0,
+      "step": 500,
+      "selection_macro_f1": 0.8665135631467109
+    },
+    {
+      "kind": "constant_control",
+      "regularization": 0.1,
+      "step": 200,
+      "selection_macro_f1": 0.865088349944514
+    },
+    {
+      "kind": "constant_control",
+      "regularization": 0.1,
+      "step": 500,
+      "selection_macro_f1": 0.8656405008028351
+    },
+    {
+      "kind": "constant_control",
+      "regularization": 1.0,
+      "step": 200,
+      "selection_macro_f1": 0.8647947194321457
+    },
+    {
+      "kind": "constant_control",
+      "regularization": 1.0,
+      "step": 500,
+      "selection_macro_f1": 0.8647947194321457
+    }
+  ],
+  "train_images": 3279,
+  "geometry_weight_max_abs": 0.1361796259880066,
+  "image_head_unchanged": true,
+  "backbone_frozen": true,
+  "geometry_norm": "yunet5_eye_frame_v1",
+  "test_used": false,
+  "nll_before": 0.3763982499384595,
+  "nll_after": 0.27536735793108613,
+  "policy_sha256": "b815835db33f7e1d2cab92cfbf6a6ad2978203758ee989242422e1c0a3779ca0"
+}

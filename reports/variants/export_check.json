@@ -1,0 +1,20 @@
+{
+  "checked_images": 20,
+  "checked_views": 40,
+  "matching_decisions": 20,
+  "max_absolute_difference": 5.245208740234375e-06,
+  "coordinates_only_logit_change_max": 0.13057982921600342,
+  "onnx_inputs": {
+    "image": [
+      1,
+      3,
+      224,
+      224
+    ],
+    "landmarks": [
+      1,
+      10
+    ]
+  },
+  "missing_geometry_rejected": true
+}

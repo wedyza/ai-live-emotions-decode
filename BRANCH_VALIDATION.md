@@ -1,5 +1,8 @@
-# Проверки эталонной Git-ветки
+# Проверки отдельной экспериментальной Git-ветки
 
-В свежем виртуальном окружении этой ветки на Linux/Python3.12 выполнены uv sync --all-packages --no-dev --python3.12 --locked,26 unittest (OK), tools/project.py check --model variant1 (checksums + реальный синтетический инференс OK). Датасетов и личных файлов для этих проверок нет. Синтетический ввод не оценивает качество выражений.
-
-Исторические численные оценки относятся к зафиксированным контрольным наборам, не к новым видео. Docker/HTTP/очереди и Mac/Windows здесь не проверены. Ни в master, ни в main изменения этой ветки не внесены.
+- Чистое окружение Python3.12: `uv sync --all-packages --no-dev --python 3.12 --locked` — успешно.
+- `python -m unittest discover -s tests -v` — 36 тестов, OK.
+- `python tools/project.py check --model variant2` — checksums OK, ReliableFusionModel, synthetic inference OK. Это проверка выполнения, не оценка точности.
+- Историческое сравнение с PyTorch:20 изображений,40 отражённых представлений, максимальное расхождение около5.25e-6; протокол в reports/variants.
+- Парный контроль качества и ограничения — VARIANTS_COMPARISON_RU.md. Превосходство геометрии не установлено.
+- Текущая проверка не включает полный Docker/HTTP/RabbitMQ запуск, Windows или macOS.

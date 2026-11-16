@@ -15,5 +15,10 @@
   "models/emotion_consensus/policy.json": "1f386a2b9b893ad5010b04dd16c54f9ce74e0b669b96698e68c41d5376c974f8",
   "models/emotion_consensus/model.onnx": "0e86fc90af6969ff53c6941814c06e83c20f1cb0c4911deb534faeb8e30ec8dc",
   "models/emotion_consensus/model.onnx.json": "4ed014514a0b726462f6a2fcbffb185f7f9a2fb685c221e11d2ba954c11783c6",
-  "models/emotion_consensus/head_state.pth": "90e98c2b50fee631c3d85613bab325273e85ea67227546195b3b65ee89007e05"
+  "models/emotion_consensus/head_state.pth": "90e98c2b50fee631c3d85613bab325273e85ea67227546195b3b65ee89007e05",
+  "models/emotion_variant2/constant_control.pth": "761a68e48643506548c1a96d8ec8a75e1c4ac163f99b1fef2d6e88c59bca2d8d",
+  "models/emotion_variant2/fusion_state.pth": "e4a18ac28f83cc286c5d678a944bde29e196751c8e8da79acc834ccdeaec3478",
+  "models/emotion_variant2/policy.json": "b815835db33f7e1d2cab92cfbf6a6ad2978203758ee989242422e1c0a3779ca0",
+  "models/emotion_variant2/model.onnx": "155029ed785ec74250bca8b0873f13ad73fab8f8aeed1b8ef794d686cf871c30",
+  "models/emotion_variant2/model.onnx.json": "1ff89e554f0e6e4a7f36b82eaf1bcff84afb441158552851c4c72617f27b0c9d"
 }

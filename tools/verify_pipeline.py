@@ -8,11 +8,12 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--data',type=Path,default=ROOT/'datasets/faces_landmarks')
-p.add_argument('--model',choices=['reliable','expanded','experimental','aligned'],default='experimental')
+p.add_argument('--model',choices=['reliable','expanded','variant1','variant2','experimental','aligned'],default='experimental')
 a=p.parse_args()
-os.environ['AI_EMOTION_MODEL']='reliable' if a.model in ['reliable','expanded'] else 'experimental'
+os.environ['AI_EMOTION_MODEL']='reliable' if a.model in ['reliable','expanded','variant1'] else ('fusion' if a.model=='variant2' else 'experimental')
 os.environ['AI_EMOTION_MODEL_PATH']='models/emotion_aligned/model.onnx' if a.model=='aligned' else 'models/emotion_experiment/model.onnx'
-if a.model=='expanded':os.environ['AI_RELIABILITY_PATH']='models/emotion_consensus'
+if a.model in ['expanded','variant1']:os.environ['AI_RELIABILITY_PATH']='models/emotion_consensus'
+if a.model=='variant2':os.environ['AI_FUSION_PATH']='models/emotion_variant2'
 from common.messages import FrameRef,FaceCaptureMessage
 from cv_service.service import FaceCaptureHandler
 from ai_service.service import AnalyzeHandler

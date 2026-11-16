@@ -6,13 +6,16 @@ from PIL import Image,ImageDraw
 os.environ['ORT_DISABLE_TELEMETRY']='1'
 os.environ['AI_EMOTION_MODEL']='reliable'
 p=argparse.ArgumentParser(description=__doc__)
-p.add_argument('--mode',choices=['reliable','expanded'],default='reliable')
+p.add_argument('--mode',choices=['reliable','expanded','variant1','variant2'],default='reliable')
 p.add_argument('image',type=Path);p.add_argument('--output',type=Path)
 a=p.parse_args()
-os.environ['AI_RELIABILITY_PATH']='models/emotion_consensus' if a.mode=='expanded' else 'models/emotion_reliable'
+if a.mode=='variant2':
+ os.environ['AI_EMOTION_MODEL']='fusion';os.environ['AI_FUSION_PATH']='models/emotion_variant2'
+os.environ['AI_RELIABILITY_PATH']='models/emotion_consensus' if a.mode in ['expanded','variant1'] else 'models/emotion_reliable'
 if a.output and a.output.resolve()==a.image.resolve():p.error('Output must differ from original photo')
 from ai_service.analyzer import _recognizer
 from common.face_preprocessing import prepare_face
+from common.landmark_features import landmark_features
 from cv_service.detector import detect_captures
 from model.yunet import get_yunet
 with Image.open(a.image) as im:im=im.convert('RGB')
@@ -23,7 +26,7 @@ for i,f in enumerate(faces,1):
  box=f.bbox;coords=(box.x,box.y,box.width,box.height)
  try:
   crop=prepare_face(rgb,coords,f.landmarks.points,recognizer.crop_mode)
-  d=recognizer.predict_decision(crop)
+  d=recognizer.predict_decision(crop,landmark_features(f.landmarks.points)) if getattr(recognizer,'requires_geometry',False) else recognizer.predict_decision(crop)
   row={'face':i,'accepted':d.accepted,'expression':d.label if d.accepted else None,'reason':d.reason,'model_score':float(d.scores.max()) if d.accepted else None,'bbox':list(coords),'landmarks':f.landmarks.points}
  except ValueError:
   row={'face':i,'accepted':False,'expression':None,'reason':'invalid_face_geometry','bbox':list(coords)}

@@ -11,6 +11,7 @@ from PIL import Image, UnidentifiedImageError
 from common.messages import Face
 from common.paths import project_path
 from common.face_preprocessing import prepare_face, BBOX
+from common.landmark_features import landmark_features
 from ai_service.config import settings
 
 logger = logging.getLogger(__name__)
@@ -19,6 +20,10 @@ _lock = threading.Lock()
 
 @lru_cache(maxsize=1)
 def _recognizer():
+    if settings.emotion_model == "fusion":
+        from ai_service.fusion_emotion_model import ReliableFusionModel
+        return ReliableFusionModel(project_path(settings.fusion_path))
+
     if settings.emotion_model == "reliable":
         from ai_service.reliable_emotion_model import ReliableEmotionModel
         return ReliableEmotionModel(project_path(settings.reliability_path))
@@ -74,7 +79,15 @@ def analyze_emotions(jpeg: bytes, faces: list[Face]) -> str | None:
                     results.append(f"face #{i}: uncertain (invalid_face_geometry)")
                 continue
             if hasattr(recognizer, "predict_decision"):
-                decision = recognizer.predict_decision(crop)
+                if getattr(recognizer, "requires_geometry", False):
+                    try:
+                        geometry=landmark_features(points)
+                    except ValueError:
+                        results.append(f"face #{i}: uncertain (invalid_landmarks)")
+                        continue
+                    decision = recognizer.predict_decision(crop, geometry)
+                else:
+                    decision = recognizer.predict_decision(crop)
                 if not decision.accepted:
                     results.append(f"face #{i}: uncertain ({decision.reason})")
                     continue

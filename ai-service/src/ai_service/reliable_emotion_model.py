@@ -16,7 +16,7 @@ class ExpressionDecision:
 
 
 class ReliableEmotionModel:
-    def __init__(self, directory: str | Path):
+    def __init__(self, directory: str | Path, *, model_class=None):
         directory = Path(directory).resolve()
         policy = json.loads((directory / 'policy.json').read_text(encoding='utf-8'))
         path = directory / 'model.onnx'
@@ -24,7 +24,7 @@ class ReliableEmotionModel:
             raise ValueError('Unsupported reliability policy version')
         if hashlib.sha256(path.read_bytes()).hexdigest() != policy['model_sha256']:
             raise ValueError('Reliability policy belongs to different weights')
-        self.model = LocalEmotionModel(str(path))
+        self.model = (model_class or LocalEmotionModel)(str(path))
         self.classes = self.model.classes
         self.crop_mode = self.model.crop_mode
         if self.classes != policy['classes'] or self.crop_mode != policy['crop']:
@@ -59,7 +59,12 @@ class ReliableEmotionModel:
         return np.asarray(original,dtype=np.float64),np.asarray(flipped,dtype=np.float64)
 
     def predict_decision(self, face_img) -> ExpressionDecision:
-        original, flipped = self._logits(face_img)
+        return self._decision_from_logits(*self._logits(face_img))
+
+    def _decision_from_logits(self, original, flipped) -> ExpressionDecision:
+        original=np.asarray(original,dtype=np.float64);flipped=np.asarray(flipped,dtype=np.float64)
+        if original.shape!=(8,) or flipped.shape!=(8,) or not np.isfinite(original).all() or not np.isfinite(flipped).all():
+            raise RuntimeError("Expected two finite eight-class logit vectors")
         logits = (original + flipped) / (2 * self.temperature)
         scores = np.exp(logits - logits.max())
         scores /= scores.sum()

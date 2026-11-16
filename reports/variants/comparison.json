@@ -1,0 +1,143 @@
+{
+  "test_protocol_sha256": "dd52c67de83c5227cc170f14262b1a2e68fe8b8fe0f8d8437fc25a5239974453",
+  "variant2_frozen_policy_sha256": "b815835db33f7e1d2cab92cfbf6a6ad2978203758ee989242422e1c0a3779ca0",
+  "variant1_raw": {
+    "n_total": 750,
+    "matched_detected": 744,
+    "answered": 744,
+    "coverage_all": 0.992,
+    "correct": 658,
+    "wrong": 86,
+    "accuracy_answered": 0.8844086021505376,
+    "wilson95": [
+      0.8594329169563223,
+      0.9054349374128383
+    ],
+    "correct_fraction_all": 0.8773333333333333
+  },
+  "variant2_raw": {
+    "n_total": 750,
+    "matched_detected": 744,
+    "answered": 744,
+    "coverage_all": 0.992,
+    "correct": 656,
+    "wrong": 88,
+    "accuracy_answered": 0.8817204301075269,
+    "wilson95": [
+      0.8565308848590785,
+      0.9029882432557522
+    ],
+    "correct_fraction_all": 0.8746666666666667
+  },
+  "variant1_selective": {
+    "n_total": 750,
+    "matched_detected": 744,
+    "answered": 674,
+    "coverage_all": 0.8986666666666666,
+    "correct": 616,
+    "wrong": 58,
+    "accuracy_answered": 0.913946587537092,
+    "wilson95": [
+      0.8903583002333257,
+      0.9328428724300223
+    ],
+    "correct_fraction_all": 0.8213333333333334
+  },
+  "variant2_selective": {
+    "n_total": 750,
+    "matched_detected": 744,
+    "answered": 673,
+    "coverage_all": 0.8973333333333333,
+    "correct": 617,
+    "wrong": 56,
+    "accuracy_answered": 0.9167904903417533,
+    "wilson95": [
+      0.8934826652534182,
+      0.9353670981181001
+    ],
+    "correct_fraction_all": 0.8226666666666667
+  },
+  "raw_macro_f1_present_classes": {
+    "variant1": 0.8912856832728764,
+    "variant2": 0.8885066762268845
+  },
+  "paired_variant2_vs_variant1": {
+    "delta": -0.002688172043010753,
+    "bootstrap95": [
+      -0.012096774193548387,
+      0.006720430107526882
+    ]
+  },
+  "constant_control_raw": {
+    "n_total": 750,
+    "matched_detected": 744,
+    "answered": 744,
+    "coverage_all": 0.992,
+    "correct": 657,
+    "wrong": 87,
+    "accuracy_answered": 0.8830645161290323,
+    "wilson95": [
+      0.8579814209007245,
+      0.9042120703412712
+    ],
+    "correct_fraction_all": 0.876
+  },
+  "paired_variant2_vs_constant_control": {
+    "delta": -0.0013440860215053765,
+    "bootstrap95": [
+      -0.010752688172043012,
+      0.006720430107526882
+    ]
+  },
+  "variant2_mean_geometry_raw": {
+    "n_total": 750,
+    "matched_detected": 744,
+    "answered": 744,
+    "coverage_all": 0.992,
+    "correct": 655,
+    "wrong": 89,
+    "accuracy_answered": 0.8803763440860215,
+    "wilson95": [
+      0.8550812948446437,
+      0.9017634701430222
+    ],
+    "correct_fraction_all": 0.8733333333333333
+  },
+  "variant2_shuffled_geometry_accuracy": {
+    "mean": 0.880510752688172,
+    "min": 0.8763440860215054,
+    "max": 0.885752688172043,
+    "replicates": 20
+  },
+  "geometry_logits_actual_vs_mean_max_abs": 5.9514031410217285,
+  "per_class": {
+    "anger": {
+      "n": 149,
+      "variant1_raw_accuracy": 0.9194630872483222,
+      "variant2_raw_accuracy": 0.9261744966442953
+    },
+    "happiness": {
+      "n": 149,
+      "variant1_raw_accuracy": 0.9261744966442953,
+      "variant2_raw_accuracy": 0.9395973154362416
+    },
+    "neutral": {
+      "n": 149,
+      "variant1_raw_accuracy": 0.912751677852349,
+      "variant2_raw_accuracy": 0.8993288590604027
+    },
+    "sadness": {
+      "n": 148,
+      "variant1_raw_accuracy": 0.75,
+      "variant2_raw_accuracy": 0.7432432432432432
+    },
+    "surprise": {
+      "n": 149,
+      "variant1_raw_accuracy": 0.912751677852349,
+      "variant2_raw_accuracy": 0.8993288590604027
+    }
+  },
+  "evidence_of_geometry_benefit": false,
+  "default_changed": false,
+  "warning": "Fresh 750-image subset covers only five common consensus labels. No evidence for rare classes, subject independence, pretraining exclusion, or arbitrary video. No tuning after test."
+}

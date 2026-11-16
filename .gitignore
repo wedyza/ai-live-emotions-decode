@@ -76,3 +76,7 @@ landmark_preview*.png
 *.bundle
 
 !models/emotion_consensus/head_state.pth
+
+!reports/variants/test_predictions.npz
+!models/emotion_variant2/fusion_state.pth
+!models/emotion_variant2/constant_control.pth

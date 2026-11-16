@@ -37,17 +37,16 @@ def check():
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('command',choices=['check','start','infra','status'])
-    p.add_argument('--model',choices=['reliable','variant1','expanded','adapted','experimental','pretrained','aligned'],default=None)
+    p.add_argument('--model',choices=['reliable','expanded','variant1','variant2','adapted','experimental','pretrained','aligned'],default=None)
     a=p.parse_args()
     os.chdir(ROOT)
     if a.model:
-        os.environ['AI_EMOTION_MODEL']='reliable' if a.model=='expanded' else ('reliable' if a.model=='variant1' else ('experimental' if a.model in ['aligned','adapted'] else a.model))
-        if a.model in ['reliable','expanded']:
-            os.environ['AI_RELIABILITY_PATH']='models/emotion_consensus' if a.model=='expanded' else 'models/emotion_reliable'
+        os.environ['AI_EMOTION_MODEL']='reliable' if a.model in ['expanded','variant1'] else ('fusion' if a.model=='variant2' else ('experimental' if a.model in ['aligned','adapted'] else a.model))
+        if a.model=='variant2':os.environ['AI_FUSION_PATH']='models/emotion_variant2'
+        if a.model in ['reliable','expanded','variant1']:
+            os.environ['AI_RELIABILITY_PATH']='models/emotion_consensus' if a.model in ['expanded','variant1'] else 'models/emotion_reliable'
         if a.model in ['experimental','aligned','adapted']:
             os.environ['AI_EMOTION_MODEL_PATH']={'experimental':'models/emotion_experiment/model.onnx','aligned':'models/emotion_aligned/model.onnx','adapted':'models/emotion_head_candidate/model.onnx'}[a.model]
-    if a.model=='variant1':
-        os.environ['AI_EMOTION_MODEL']='reliable';os.environ['AI_RELIABILITY_PATH']='models/emotion_consensus'
     if a.command in ['infra','status']:
         args=['docker','compose']+(['up','-d','--wait'] if a.command=='infra' else ['ps'])
         try:subprocess.run(args,cwd=ROOT,check=True)

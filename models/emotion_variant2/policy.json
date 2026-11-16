@@ -1,0 +1,85 @@
+{
+  "version": 2,
+  "classes": [
+    "anger",
+    "contempt",
+    "disgust",
+    "fear",
+    "happiness",
+    "neutral",
+    "sadness",
+    "surprise"
+  ],
+  "crop": "yunet5_similarity_v1",
+  "model_variant": "variant2",
+  "geometry_norm": "yunet5_eye_frame_v1",
+  "model_sha256": "155029ed785ec74250bca8b0873f13ad73fab8f8aeed1b8ef794d686cf871c30",
+  "supported_classes": [
+    "anger",
+    "happiness",
+    "neutral",
+    "sadness",
+    "surprise"
+  ],
+  "temperature": 0.49594435775293405,
+  "min_score": 0.0,
+  "min_margin": 0.0,
+  "require_flip_agreement": true,
+  "class_thresholds": {
+    "anger": 0.4,
+    "contempt": null,
+    "disgust": null,
+    "fear": null,
+    "happiness": 0.35,
+    "neutral": 0.35,
+    "sadness": 0.85,
+    "surprise": 0.35
+  },
+  "class_evidence": {
+    "anger": {
+      "threshold": 0.4,
+      "n": 66,
+      "correct": 60,
+      "precision": 0.9090909090909091,
+      "wilson_lower": 0.8155105617491718
+    },
+    "contempt": {
+      "reason": "insufficient_class_evidence"
+    },
+    "disgust": {
+      "reason": "insufficient_class_evidence"
+    },
+    "fear": {
+      "reason": "insufficient_class_evidence"
+    },
+    "happiness": {
+      "threshold": 0.35,
+      "n": 243,
+      "correct": 234,
+      "precision": 0.9629629629629629,
+      "wilson_lower": 0.9311210392594285
+    },
+    "neutral": {
+      "threshold": 0.35,
+      "n": 276,
+      "correct": 252,
+      "precision": 0.9130434782608695,
+      "wilson_lower": 0.8738760319023021
+    },
+    "sadness": {
+      "threshold": 0.85,
+      "n": 45,
+      "correct": 41,
+      "precision": 0.9111111111111111,
+      "wilson_lower": 0.792661488316343
+    },
+    "surprise": {
+      "threshold": 0.35,
+      "n": 108,
+      "correct": 99,
+      "precision": 0.9166666666666666,
+      "wilson_lower": 0.8491694181597665
+    }
+  },
+  "test_used": false
+}
