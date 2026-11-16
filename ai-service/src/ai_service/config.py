@@ -15,8 +15,9 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    # Bundled experimental model; select pretrained explicitly for comparison.
-    emotion_model: Literal["experimental", "pretrained"] = "experimental"
+    # Selected on PublicTest, calibrated separately; PrivateTest is evaluation only.
+    emotion_model: Literal["reliable", "experimental", "pretrained"] = "reliable"
+    reliability_path: str = "models/emotion_reliable"
     emotion_model_path: str = "models/emotion_experiment/model.onnx"
 
     # Инференс модели — самый медленный шаг конвейера.

@@ -1,11 +1,7 @@
-# Проверки переносимости
+# Текущие проверки
 
-Независимая проверка: Linux, Python 3.12, новая .venv, uv sync --all-packages --no-dev --locked. Реально загружены комплектные ONNX-веса пользователя; проверены инференс и softmax. Для synthetic inputs нельзя оценить правильность эмоций.
+26 unittest прошли на Linux/Python3.12, включая обратную совместимость policy v1 и индивидуальные пороги/отказы policy v2. Численный экспорт нового классификатора проверен на20 изображениях/40 видах: max abs difference5.16e-6, совпадение решений20/20. Исходные35887 изображения сверены попиксельно с исходным CSV; новая отложенная часть804 изображения исключена из train обеих адаптаций.
 
-7 unittest checks passed: paths from different cwd; actionable missing-weight failure; real model output; service analyzer without dataset; serialization of shared detector with deliberately concurrent calls; real concurrent YuNet inference with different frame sizes; notebook target/y separation and code compilation.
+Expanded не прошёл предзаданный критерий замены default: precision ниже прежнего консервативного reliable. Default сохранён. Все сравнения и ограничения: CONSENSUS_REPORT_RU.md. Прежние материалы: RELIABILITY_REPORT_RU.md и VERIFICATION_RU.md.
 
-tools/project.py check passed; bundled hashes match. Notebook code cells compile and contain no saved outputs/private absolute paths. Training dependencies resolved and locked, but training notebook was not re-executed on a dataset in this environment (dataset not supplied with this update).
-
-Full Docker pipeline, Windows and macOS launcher behavior are NOT independently verified here. User earlier verified the prior version's complete pipeline and the new classifier on Mac; that does not replace a fresh acceptance check for this package. Docker executable unavailable in this environment.
-
-Known model limits: inherited video labels, missing classes, macro-F1 clip-bootstrap CI includes zero, possible dependency between same-participant clips. See MODEL_CARD.md.
+Реальный кадр прошёл YuNet → пять точек → новый классификатор → уведомление; транспорт/хранилище в памяти. Docker/HTTP/очереди, Windows/macOS/MPS не проверены. Телеметрия отключена. Commit/push не выполнялись.

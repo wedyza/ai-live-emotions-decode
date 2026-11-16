@@ -13,7 +13,7 @@ members = [
 training = [
     "torch==2.15.0", "torchvision", "timm", "pandas", "scikit-learn",
     "matplotlib", "scipy", "tqdm", "onnx", "onnxruntime", "onnxscript",
-    "ipykernel", "pillow", "nbformat",
+    "ipykernel", "pillow", "nbformat", "pyarrow==26.0.1",
 ]
 
 dev = [

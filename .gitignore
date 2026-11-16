@@ -59,9 +59,20 @@ dataset/
 *.zip
 *.pth
 reports/
-# Publish only the small documented experiment summary.
+# Publish documented metrics/protocols, not face images or training caches.
 !reports/
-reports/*
-!reports/experiment_summary.json
+reports/**/*
+!reports/**/
+!reports/**/*.json
+!reports/**/*.md
+!reports/reliability/public_logits.npz
+!reports/reliability/private_logits.npz
+!reports/reliability/public_calibration_logits.npz
 patch_backups/
 portability_update/
+landmark_update/
+landmark_preview*.jpg
+landmark_preview*.png
+*.bundle
+
+!models/emotion_consensus/head_state.pth

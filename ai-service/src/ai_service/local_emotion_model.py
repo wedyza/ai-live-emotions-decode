@@ -1,9 +1,14 @@
+import os
+os.environ["ORT_DISABLE_TELEMETRY"] = "1"
+
 import json
 from pathlib import Path
 
 import numpy as np
 import onnxruntime as ort
+ort.disable_telemetry_events()
 from PIL import Image
+from common.face_preprocessing import BBOX, ALIGNED
 
 
 class LocalEmotionModel:
@@ -28,7 +33,8 @@ class LocalEmotionModel:
             raise ValueError("Invalid image size or duplicate classes")
         if metadata.get("output") != "logits" or metadata.get("batch_size") != 1:
             raise ValueError("Expected batch-one logits model")
-        if metadata.get("crop") != "bbox without margin or alignment":
+        self.crop_mode = metadata.get("crop")
+        if self.crop_mode not in [BBOX, ALIGNED]:
             raise ValueError("Unsupported crop preprocessing")
         if metadata["input"] != "RGB":
             raise ValueError("Expected RGB input")

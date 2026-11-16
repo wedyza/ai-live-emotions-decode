@@ -10,6 +10,7 @@ import numpy as np
 from PIL import Image, UnidentifiedImageError
 from common.messages import Face
 from common.paths import project_path
+from common.face_preprocessing import prepare_face, BBOX
 from ai_service.config import settings
 
 logger = logging.getLogger(__name__)
@@ -18,6 +19,10 @@ _lock = threading.Lock()
 
 @lru_cache(maxsize=1)
 def _recognizer():
+    if settings.emotion_model == "reliable":
+        from ai_service.reliable_emotion_model import ReliableEmotionModel
+        return ReliableEmotionModel(project_path(settings.reliability_path))
+
     if settings.emotion_model == "experimental":
         path = project_path(settings.emotion_model_path)
         from ai_service.local_emotion_model import LocalEmotionModel
@@ -58,8 +63,24 @@ def analyze_emotions(jpeg: bytes, faces: list[Face]) -> str | None:
             if x2 <= x1 or y2 <= y1:
                 logger.warning("Skipping bbox outside image: %s", box)
                 continue
-            crop = np.ascontiguousarray(rgb[y1:y2, x1:x2])
-            emotion, scores = _recognizer().predict_emotions(crop, logits=False)
+            recognizer = _recognizer()
+            mode = getattr(recognizer, "crop_mode", BBOX)
+            points = face.landmarks.points if face.landmarks is not None else None
+            try:
+                crop = prepare_face(rgb, (box.x, box.y, box.width, box.height), points, mode)
+            except ValueError as exc:
+                logger.warning("Skipping face #%d: %s", i, exc)
+                if hasattr(recognizer, "predict_decision"):
+                    results.append(f"face #{i}: uncertain (invalid_face_geometry)")
+                continue
+            if hasattr(recognizer, "predict_decision"):
+                decision = recognizer.predict_decision(crop)
+                if not decision.accepted:
+                    results.append(f"face #{i}: uncertain ({decision.reason})")
+                    continue
+                emotion, scores = decision.label, decision.scores
+            else:
+                emotion, scores = recognizer.predict_emotions(crop, logits=False)
             values = np.asarray(scores, dtype=float).reshape(-1)
             if values.size != 8 or not np.isfinite(values).all():
                 raise RuntimeError(

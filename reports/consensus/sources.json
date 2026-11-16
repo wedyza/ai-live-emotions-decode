@@ -1,0 +1,19 @@
+{
+  "files": [
+    {
+      "file": "original_fer.csv",
+      "url": "https://huggingface.co/datasets/DerrickUnleashed/FER-2013/resolve/main/icml_face_data.csv",
+      "sha256": "2c7ce224ef03ec2e2e522d10b93a069900b26fa1c028174d91d5f1f8013a2884"
+    },
+    {
+      "file": "ferplus.csv",
+      "url": "https://raw.githubusercontent.com/microsoft/FERPlus/master/fer2013new.csv",
+      "sha256": "9206e20d62f56475939f516847d61753e4860caeac9718b560129541b776fc2c"
+    },
+    {
+      "file": "ferplus_readme.md",
+      "url": "https://raw.githubusercontent.com/microsoft/FERPlus/master/README.md",
+      "sha256": "5d2f556f999d99e2a72d3e239a6e681922450b9db5cab40cd3655e9d615f8c99"
+    }
+  ]
+}

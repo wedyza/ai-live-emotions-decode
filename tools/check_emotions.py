@@ -1,12 +1,13 @@
 """Run the actual service analyzer on one dataset frame, without queues or S3."""
 import argparse
 import csv
+import json
 import sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 for folder in ['ai-service/src', 'libs/common/src']:
     sys.path.insert(0, str(ROOT / folder))
-from common.messages import BoundingBox, Face
+from common.messages import BoundingBox, Face, FaceLandmarks
 from ai_service.analyzer import analyze_emotions
 
 p = argparse.ArgumentParser()
@@ -20,4 +21,4 @@ if row is None:
 box = BoundingBox(**{k: int(row[k]) for k in ['x', 'y', 'width', 'height']})
 print('Frame:', row['file'], flush=True)
 print('Video label (not verified frame truth):', row['emotion'], flush=True)
-print(analyze_emotions((a.data / row['file']).read_bytes(), [Face(bbox=box)]))
+print(analyze_emotions((a.data / row['file']).read_bytes(), [Face(bbox=box, landmarks=FaceLandmarks(points=json.loads(row["landmarks"])) if row.get("landmarks") else None)]))

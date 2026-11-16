@@ -1,0 +1,2550 @@
+{
+  "images": 209,
+  "face_observations": 215,
+  "accepted": 54,
+  "records": [
+    {
+      "file": "olivetti_236.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.36371730810516095
+        }
+      ]
+    },
+    {
+      "file": "olivetti_236.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.364019966066352
+        }
+      ]
+    },
+    {
+      "file": "olivetti_236.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.3818768699093047
+        }
+      ]
+    },
+    {
+      "file": "olivetti_236.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.29356801528819904
+        }
+      ]
+    },
+    {
+      "file": "olivetti_236.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.37081986518043875
+        }
+      ]
+    },
+    {
+      "file": "olivetti_382.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.8569640174358943
+        }
+      ]
+    },
+    {
+      "file": "olivetti_382.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.7647750449632127
+        }
+      ]
+    },
+    {
+      "file": "olivetti_382.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6554501602835734
+        }
+      ]
+    },
+    {
+      "file": "olivetti_382.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.822920407863181
+        }
+      ]
+    },
+    {
+      "file": "olivetti_382.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.8135889868504473
+        }
+      ]
+    },
+    {
+      "file": "olivetti_132.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4003337522576623
+        }
+      ]
+    },
+    {
+      "file": "olivetti_132.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.37800556782830136
+        }
+      ]
+    },
+    {
+      "file": "olivetti_132.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.41062362829197824
+        }
+      ]
+    },
+    {
+      "file": "olivetti_132.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.40544176975989976
+        }
+      ]
+    },
+    {
+      "file": "olivetti_132.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4351051574570796
+        }
+      ]
+    },
+    {
+      "file": "olivetti_331.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.2363234574383943
+        }
+      ]
+    },
+    {
+      "file": "olivetti_331.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.24281744908161454
+        }
+      ]
+    },
+    {
+      "file": "olivetti_331.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.27837064131928596
+        }
+      ]
+    },
+    {
+      "file": "olivetti_331.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.2572048303133266
+        }
+      ]
+    },
+    {
+      "file": "olivetti_331.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.22896875422413906
+        }
+      ]
+    },
+    {
+      "file": "olivetti_230.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5015899061358673
+        }
+      ]
+    },
+    {
+      "file": "olivetti_230.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.47855039014886264
+        }
+      ]
+    },
+    {
+      "file": "olivetti_230.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.3480204586063051
+        }
+      ]
+    },
+    {
+      "file": "olivetti_230.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.44052631220967564
+        }
+      ]
+    },
+    {
+      "file": "olivetti_230.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5388170315146462
+        }
+      ]
+    },
+    {
+      "file": "olivetti_373.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.22329664577049488
+        }
+      ]
+    },
+    {
+      "file": "olivetti_373.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.2583101756891098
+        }
+      ]
+    },
+    {
+      "file": "olivetti_373.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.229158397083678
+        }
+      ]
+    },
+    {
+      "file": "olivetti_373.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.2566713993092771
+        }
+      ]
+    },
+    {
+      "file": "olivetti_373.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.2651204306998092
+        }
+      ]
+    },
+    {
+      "file": "olivetti_298.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.46955567374672313
+        }
+      ]
+    },
+    {
+      "file": "olivetti_298.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.48186547510510874
+        }
+      ]
+    },
+    {
+      "file": "olivetti_298.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.42402571945414624
+        }
+      ]
+    },
+    {
+      "file": "olivetti_298.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4614836225627597
+        }
+      ]
+    },
+    {
+      "file": "olivetti_298.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5786325983462021
+        }
+      ]
+    },
+    {
+      "file": "olivetti_272.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.48059424735558104
+        }
+      ]
+    },
+    {
+      "file": "olivetti_272.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.428240080525185
+        }
+      ]
+    },
+    {
+      "file": "olivetti_272.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.489652271390677
+        }
+      ]
+    },
+    {
+      "file": "olivetti_272.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4606460272846317
+        }
+      ]
+    },
+    {
+      "file": "olivetti_272.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5002198042587667
+        }
+      ]
+    },
+    {
+      "file": "olivetti_183.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "unvalidated_class",
+          "score": 0.3347316805797681
+        }
+      ]
+    },
+    {
+      "file": "olivetti_183.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.30618509088914597
+        }
+      ]
+    },
+    {
+      "file": "olivetti_183.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.39778851325105313
+        }
+      ]
+    },
+    {
+      "file": "olivetti_183.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.3954604278660306
+        }
+      ]
+    },
+    {
+      "file": "olivetti_183.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "unvalidated_class",
+          "score": 0.31801318838294773
+        }
+      ]
+    },
+    {
+      "file": "olivetti_115.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.7266192412064498
+        }
+      ]
+    },
+    {
+      "file": "olivetti_115.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6724287663543772
+        }
+      ]
+    },
+    {
+      "file": "olivetti_115.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5990721750904231
+        }
+      ]
+    },
+    {
+      "file": "olivetti_115.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.7252157956965938
+        }
+      ]
+    },
+    {
+      "file": "olivetti_115.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "neutral",
+          "reason": null,
+          "score": 0.7703248343149076
+        }
+      ]
+    },
+    {
+      "file": "olivetti_362.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.41291244603388244
+        }
+      ]
+    },
+    {
+      "file": "olivetti_362.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.39788505528067786
+        }
+      ]
+    },
+    {
+      "file": "olivetti_362.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4480858297020002
+        }
+      ]
+    },
+    {
+      "file": "olivetti_362.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4671262025831285
+        }
+      ]
+    },
+    {
+      "file": "olivetti_362.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4529097886717163
+        }
+      ]
+    },
+    {
+      "file": "olivetti_044.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9961361536341853
+        }
+      ]
+    },
+    {
+      "file": "olivetti_044.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9925892238087224
+        }
+      ]
+    },
+    {
+      "file": "olivetti_044.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.994454905442122
+        }
+      ]
+    },
+    {
+      "file": "olivetti_044.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9758493449541591
+        }
+      ]
+    },
+    {
+      "file": "olivetti_044.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9965472338776
+        }
+      ]
+    },
+    {
+      "file": "olivetti_217.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.8356733412146712
+        }
+      ]
+    },
+    {
+      "file": "olivetti_217.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.8355124319286703
+        }
+      ]
+    },
+    {
+      "file": "olivetti_217.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.8095918857099158
+        }
+      ]
+    },
+    {
+      "file": "olivetti_217.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.8014226867900444
+        }
+      ]
+    },
+    {
+      "file": "olivetti_217.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.8383078606500136
+        }
+      ]
+    },
+    {
+      "file": "olivetti_303.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6614431650284822
+        }
+      ]
+    },
+    {
+      "file": "olivetti_303.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6660658456157176
+        }
+      ]
+    },
+    {
+      "file": "olivetti_303.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.7679393326520642
+        }
+      ]
+    },
+    {
+      "file": "olivetti_303.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.7790722762194037
+        }
+      ]
+    },
+    {
+      "file": "olivetti_303.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.7186548196877585
+        }
+      ]
+    },
+    {
+      "file": "olivetti_181.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4413123416496329
+        }
+      ]
+    },
+    {
+      "file": "olivetti_181.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4025271014301083
+        }
+      ]
+    },
+    {
+      "file": "olivetti_181.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.3714269023684537
+        }
+      ]
+    },
+    {
+      "file": "olivetti_181.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.39547938439108754
+        }
+      ]
+    },
+    {
+      "file": "olivetti_181.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.3669688508252465
+        }
+      ]
+    },
+    {
+      "file": "olivetti_397.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6188146651131017
+        }
+      ]
+    },
+    {
+      "file": "olivetti_397.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5583432857781523
+        }
+      ]
+    },
+    {
+      "file": "olivetti_397.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6273316548288373
+        }
+      ]
+    },
+    {
+      "file": "olivetti_397.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6959445044398058
+        }
+      ]
+    },
+    {
+      "file": "olivetti_397.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6768534528392077
+        }
+      ]
+    },
+    {
+      "file": "olivetti_094.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6207545884294154
+        }
+      ]
+    },
+    {
+      "file": "olivetti_094.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5756677895764711
+        }
+      ]
+    },
+    {
+      "file": "olivetti_094.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.49310034209553344
+        }
+      ]
+    },
+    {
+      "file": "olivetti_094.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6018319810288358
+        }
+      ]
+    },
+    {
+      "file": "olivetti_094.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5580702157737444
+        }
+      ]
+    },
+    {
+      "file": "olivetti_144.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5608976942789595
+        }
+      ]
+    },
+    {
+      "file": "olivetti_144.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5133412874659472
+        }
+      ]
+    },
+    {
+      "file": "olivetti_144.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4054180612484617
+        }
+      ]
+    },
+    {
+      "file": "olivetti_144.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4517030258036414
+        }
+      ]
+    },
+    {
+      "file": "olivetti_144.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6022205516729475
+        }
+      ]
+    },
+    {
+      "file": "olivetti_398.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.630940232673307
+        }
+      ]
+    },
+    {
+      "file": "olivetti_398.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.536289746327526
+        }
+      ]
+    },
+    {
+      "file": "olivetti_398.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6165635794443971
+        }
+      ]
+    },
+    {
+      "file": "olivetti_398.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.831732226444217
+        }
+      ]
+    },
+    {
+      "file": "olivetti_398.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5815096383975912
+        }
+      ]
+    },
+    {
+      "file": "olivetti_317.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.34357001135417786
+        }
+      ]
+    },
+    {
+      "file": "olivetti_317.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.29678780909408087
+        }
+      ]
+    },
+    {
+      "file": "olivetti_317.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.3131946580160495
+        }
+      ]
+    },
+    {
+      "file": "olivetti_317.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.34445391399659364
+        }
+      ]
+    },
+    {
+      "file": "olivetti_317.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.3621881613465899
+        }
+      ]
+    },
+    {
+      "file": "olivetti_264.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.7028472881722707
+        }
+      ]
+    },
+    {
+      "file": "olivetti_264.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6971193394572653
+        }
+      ]
+    },
+    {
+      "file": "olivetti_264.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6244906368997967
+        }
+      ]
+    },
+    {
+      "file": "olivetti_264.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.8893765911798366
+        }
+      ]
+    },
+    {
+      "file": "olivetti_264.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6974870507099609
+        }
+      ]
+    },
+    {
+      "file": "olivetti_289.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4711275508027389
+        }
+      ]
+    },
+    {
+      "file": "olivetti_289.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4383733288662078
+        }
+      ]
+    },
+    {
+      "file": "olivetti_289.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.41922988051294663
+        }
+      ]
+    },
+    {
+      "file": "olivetti_289.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.39035342152583136
+        }
+      ]
+    },
+    {
+      "file": "olivetti_289.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4608733677423924
+        }
+      ]
+    },
+    {
+      "file": "olivetti_162.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.8269642163997193
+        }
+      ]
+    },
+    {
+      "file": "olivetti_162.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.7422856999500763
+        }
+      ]
+    },
+    {
+      "file": "olivetti_162.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.7407163726199375
+        }
+      ]
+    },
+    {
+      "file": "olivetti_162.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.7475575657766766
+        }
+      ]
+    },
+    {
+      "file": "olivetti_162.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.7990511445599101
+        }
+      ]
+    },
+    {
+      "file": "olivetti_124.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4404674658632588
+        }
+      ]
+    },
+    {
+      "file": "olivetti_124.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.39970724680066155
+        }
+      ]
+    },
+    {
+      "file": "olivetti_124.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5285928591279442
+        }
+      ]
+    },
+    {
+      "file": "olivetti_124.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.42365617520867105
+        }
+      ]
+    },
+    {
+      "file": "olivetti_124.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4703737117406271
+        }
+      ]
+    },
+    {
+      "file": "olivetti_258.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6658558553545703
+        }
+      ]
+    },
+    {
+      "file": "olivetti_258.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6179734353963897
+        }
+      ]
+    },
+    {
+      "file": "olivetti_258.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4563710955042467
+        }
+      ]
+    },
+    {
+      "file": "olivetti_258.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.7261018475642103
+        }
+      ]
+    },
+    {
+      "file": "olivetti_258.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5537904402598162
+        }
+      ]
+    },
+    {
+      "file": "olivetti_372.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.2724473841940729
+        }
+      ]
+    },
+    {
+      "file": "olivetti_372.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.31341250902392326
+        }
+      ]
+    },
+    {
+      "file": "olivetti_372.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.40001513902472874
+        }
+      ]
+    },
+    {
+      "file": "olivetti_372.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.3126086254415563
+        }
+      ]
+    },
+    {
+      "file": "olivetti_372.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.256340551669724
+        }
+      ]
+    },
+    {
+      "file": "olivetti_117.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.8646645182137291
+        }
+      ]
+    },
+    {
+      "file": "olivetti_117.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.790824063029928
+        }
+      ]
+    },
+    {
+      "file": "olivetti_117.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.7152543683713931
+        }
+      ]
+    },
+    {
+      "file": "olivetti_117.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.7774618592254209
+        }
+      ]
+    },
+    {
+      "file": "olivetti_117.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.854042886319877
+        }
+      ]
+    },
+    {
+      "file": "olivetti_214.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9483603672128648
+        }
+      ]
+    },
+    {
+      "file": "olivetti_214.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9259770993974961
+        }
+      ]
+    },
+    {
+      "file": "olivetti_214.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9579241966216937
+        }
+      ]
+    },
+    {
+      "file": "olivetti_214.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9463585732779042
+        }
+      ]
+    },
+    {
+      "file": "olivetti_214.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9788343950925803
+        }
+      ]
+    },
+    {
+      "file": "olivetti_120.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5203206506982382
+        }
+      ]
+    },
+    {
+      "file": "olivetti_120.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.3725529436699264
+        }
+      ]
+    },
+    {
+      "file": "olivetti_120.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5257647763752944
+        }
+      ]
+    },
+    {
+      "file": "olivetti_120.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.40621968961745936
+        }
+      ]
+    },
+    {
+      "file": "olivetti_120.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5323035533646787
+        }
+      ]
+    },
+    {
+      "file": "olivetti_292.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.406769389210302
+        }
+      ]
+    },
+    {
+      "file": "olivetti_292.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.2569008352354357
+        }
+      ]
+    },
+    {
+      "file": "olivetti_292.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.3324065463174664
+        }
+      ]
+    },
+    {
+      "file": "olivetti_292.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.3229372711363663
+        }
+      ]
+    },
+    {
+      "file": "olivetti_292.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.44780084433724937
+        }
+      ]
+    },
+    {
+      "file": "olivetti_365.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.24329295248086388
+        }
+      ]
+    },
+    {
+      "file": "olivetti_365.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.23001826613928716
+        }
+      ]
+    },
+    {
+      "file": "olivetti_365.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.30647913889167905
+        }
+      ]
+    },
+    {
+      "file": "olivetti_365.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.3692468018802992
+        }
+      ]
+    },
+    {
+      "file": "olivetti_365.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.24410725416175988
+        }
+      ]
+    },
+    {
+      "file": "olivetti_299.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.36447563937355504
+        }
+      ]
+    },
+    {
+      "file": "olivetti_299.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4439746508942163
+        }
+      ]
+    },
+    {
+      "file": "olivetti_299.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.3810427338387535
+        }
+      ]
+    },
+    {
+      "file": "olivetti_299.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.3267157670273094
+        }
+      ]
+    },
+    {
+      "file": "olivetti_299.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.4737399479919664
+        }
+      ]
+    },
+    {
+      "file": "olivetti_050.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.7020410041181712
+        }
+      ]
+    },
+    {
+      "file": "olivetti_050.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6393543815427979
+        }
+      ]
+    },
+    {
+      "file": "olivetti_050.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.49972459217444676
+        }
+      ]
+    },
+    {
+      "file": "olivetti_050.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "neutral",
+          "reason": null,
+          "score": 0.7561289057586356
+        }
+      ]
+    },
+    {
+      "file": "olivetti_050.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "neutral",
+          "reason": null,
+          "score": 0.752315560126022
+        }
+      ]
+    },
+    {
+      "file": "olivetti_201.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.8730202243999612
+        }
+      ]
+    },
+    {
+      "file": "olivetti_201.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.8485217147198679
+        }
+      ]
+    },
+    {
+      "file": "olivetti_201.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.8715551440040995
+        }
+      ]
+    },
+    {
+      "file": "olivetti_201.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.8754849503617024
+        }
+      ]
+    },
+    {
+      "file": "olivetti_201.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9248485426247396
+        }
+      ]
+    },
+    {
+      "file": "olivetti_254.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.2470162827611195
+        }
+      ]
+    },
+    {
+      "file": "olivetti_254.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.23322984443876052
+        }
+      ]
+    },
+    {
+      "file": "olivetti_254.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.27010607926979047
+        }
+      ]
+    },
+    {
+      "file": "olivetti_254.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.2794382685169415
+        }
+      ]
+    },
+    {
+      "file": "olivetti_254.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.29706537123839377
+        }
+      ]
+    },
+    {
+      "file": "olivetti_026.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9931328698561941
+        }
+      ]
+    },
+    {
+      "file": "olivetti_026.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9939076893100274
+        }
+      ]
+    },
+    {
+      "file": "olivetti_026.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9948299916634322
+        }
+      ]
+    },
+    {
+      "file": "olivetti_026.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9891923866421531
+        }
+      ]
+    },
+    {
+      "file": "olivetti_026.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9957262624565688
+        }
+      ]
+    },
+    {
+      "file": "olivetti_110.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6082987617231057
+        }
+      ]
+    },
+    {
+      "file": "olivetti_110.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6471597126669961
+        }
+      ]
+    },
+    {
+      "file": "olivetti_110.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5791696930604403
+        }
+      ]
+    },
+    {
+      "file": "olivetti_110.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6228869985719059
+        }
+      ]
+    },
+    {
+      "file": "olivetti_110.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.666340452953852
+        }
+      ]
+    },
+    {
+      "file": "olivetti_207.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6811225363168587
+        }
+      ]
+    },
+    {
+      "file": "olivetti_207.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5825706270271145
+        }
+      ]
+    },
+    {
+      "file": "olivetti_207.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5888814054867776
+        }
+      ]
+    },
+    {
+      "file": "olivetti_207.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6697142601970936
+        }
+      ]
+    },
+    {
+      "file": "olivetti_207.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6493534553585582
+        }
+      ]
+    },
+    {
+      "file": "olivetti_003.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.3710557587873301
+        }
+      ]
+    },
+    {
+      "file": "olivetti_003.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.39076080544515823
+        }
+      ]
+    },
+    {
+      "file": "olivetti_003.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.35642444818731134
+        }
+      ]
+    },
+    {
+      "file": "olivetti_003.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.3551588731952953
+        }
+      ]
+    },
+    {
+      "file": "olivetti_003.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.44611223231596686
+        }
+      ]
+    },
+    {
+      "file": "olivetti_155.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "neutral",
+          "reason": null,
+          "score": 0.8433713336028449
+        }
+      ]
+    },
+    {
+      "file": "olivetti_155.jpg",
+      "variant": "darker",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "neutral",
+          "reason": null,
+          "score": 0.8296204419917816
+        }
+      ]
+    },
+    {
+      "file": "olivetti_155.jpg",
+      "variant": "rotate10",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "neutral",
+          "reason": null,
+          "score": 0.8038194848828211
+        }
+      ]
+    },
+    {
+      "file": "olivetti_155.jpg",
+      "variant": "native64",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "neutral",
+          "reason": null,
+          "score": 0.8159916700351502
+        }
+      ]
+    },
+    {
+      "file": "olivetti_155.jpg",
+      "variant": "jpeg25",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "neutral",
+          "reason": null,
+          "score": 0.8724044794429119
+        }
+      ]
+    },
+    {
+      "file": "lena.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.6475003899187018
+        }
+      ]
+    },
+    {
+      "file": "messi5.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5424351046558189
+        }
+      ]
+    },
+    {
+      "file": "basketball1.png",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9063949302466953
+        },
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.3344098797491182
+        }
+      ]
+    },
+    {
+      "file": "basketball2.png",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9353675723528035
+        }
+      ]
+    },
+    {
+      "file": "fruits.jpg",
+      "variant": "original",
+      "faces": []
+    },
+    {
+      "file": "left01.jpg",
+      "variant": "original",
+      "faces": []
+    },
+    {
+      "file": "astronaut.png",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9999474476148865
+        }
+      ]
+    },
+    {
+      "file": "group_2008_001009.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.8455922193286981
+        },
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.9205524571124799
+        }
+      ]
+    },
+    {
+      "file": "group_2007_007763.jpg",
+      "variant": "original",
+      "faces": [
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.57715030325564
+        },
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5683393647974264
+        },
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.8985435424964132
+        },
+        {
+          "accepted": true,
+          "label": "happiness",
+          "reason": null,
+          "score": 0.995760436668913
+        },
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "view_disagreement",
+          "score": 0.4552645741787163
+        },
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5366149686479936
+        },
+        {
+          "accepted": false,
+          "label": null,
+          "reason": "low_score",
+          "score": 0.5955795263807467
+        }
+      ]
+    }
+  ],
+  "warning": "Previously inspected images, no formal emotion labels. Regression probe only, not independent accuracy."
+}

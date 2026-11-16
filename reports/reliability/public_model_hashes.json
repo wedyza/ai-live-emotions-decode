@@ -1,0 +1,7 @@
+{
+  "pretrained_bbox": "e47873934e3c384dbc6695b684038c4fad579528d05f6faeb19df4067590e16c",
+  "pretrained_aligned": "e47873934e3c384dbc6695b684038c4fad579528d05f6faeb19df4067590e16c",
+  "finetuned_bbox": "03c185b89d04854746fa9dd2f102ecb46b8e87ab5e5924a36c64bf2178d85ecb",
+  "finetuned_aligned": "cbc1a3bf0f704435e58e03e8684dc44cd21bdec23d64af0c7a015181c7d3f56e",
+  "head_candidate": "e5ae3970d28ba246ff1c1513f8763bb90fefd732e5b2b85b21bcfde9bb2217e4"
+}

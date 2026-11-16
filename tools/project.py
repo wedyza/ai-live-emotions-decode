@@ -20,12 +20,14 @@ def check():
         actual = hashlib.sha256(p.read_bytes()).hexdigest()
         if actual != expected: raise SystemExit(f'Checksum mismatch: {name}')
     from ai_service.analyzer import _recognizer, analyze_emotions
-    from common.messages import Face, BoundingBox
+    from common.messages import Face, BoundingBox, FaceLandmarks
+    from common.face_preprocessing import TEMPLATE, ALIGN_SIZE
     from PIL import Image
     import io
     selected = _recognizer()
     b=io.BytesIO();Image.new('RGB',(96,96),(120,120,120)).save(b,'JPEG')
-    result=analyze_emotions(b.getvalue(),[Face(bbox=BoundingBox(x=0,y=0,width=96,height=96))])
+    result=analyze_emotions(b.getvalue(),[Face(bbox=BoundingBox(x=0,y=0,width=96,height=96),
+        landmarks=FaceLandmarks(points=(TEMPLATE/(ALIGN_SIZE-1)*95).tolist()))])
     assert result, 'No model output'
     print('Weight checksums: OK')
     print('Selected model:',type(selected).__name__)
@@ -35,10 +37,17 @@ def check():
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('command',choices=['check','start','infra','status'])
-    p.add_argument('--model',choices=['experimental','pretrained'],default=None)
+    p.add_argument('--model',choices=['reliable','variant1','expanded','adapted','experimental','pretrained','aligned'],default=None)
     a=p.parse_args()
     os.chdir(ROOT)
-    if a.model:os.environ['AI_EMOTION_MODEL']=a.model
+    if a.model:
+        os.environ['AI_EMOTION_MODEL']='reliable' if a.model=='expanded' else ('reliable' if a.model=='variant1' else ('experimental' if a.model in ['aligned','adapted'] else a.model))
+        if a.model in ['reliable','expanded']:
+            os.environ['AI_RELIABILITY_PATH']='models/emotion_consensus' if a.model=='expanded' else 'models/emotion_reliable'
+        if a.model in ['experimental','aligned','adapted']:
+            os.environ['AI_EMOTION_MODEL_PATH']={'experimental':'models/emotion_experiment/model.onnx','aligned':'models/emotion_aligned/model.onnx','adapted':'models/emotion_head_candidate/model.onnx'}[a.model]
+    if a.model=='variant1':
+        os.environ['AI_EMOTION_MODEL']='reliable';os.environ['AI_RELIABILITY_PATH']='models/emotion_consensus'
     if a.command in ['infra','status']:
         args=['docker','compose']+(['up','-d','--wait'] if a.command=='infra' else ['ps'])
         try:subprocess.run(args,cwd=ROOT,check=True)

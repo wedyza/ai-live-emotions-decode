@@ -1,0 +1,90 @@
+{
+  "version": 2,
+  "classes": [
+    "anger",
+    "contempt",
+    "disgust",
+    "fear",
+    "happiness",
+    "neutral",
+    "sadness",
+    "surprise"
+  ],
+  "crop": "yunet5_similarity_v1",
+  "model_sha256": "0e86fc90af6969ff53c6941814c06e83c20f1cb0c4911deb534faeb8e30ec8dc",
+  "supported_classes": [
+    "anger",
+    "happiness",
+    "neutral",
+    "sadness",
+    "surprise"
+  ],
+  "temperature": 0.4988540923595071,
+  "min_score": 0.0,
+  "min_margin": 0.0,
+  "require_flip_agreement": true,
+  "class_thresholds": {
+    "anger": 0.4,
+    "contempt": null,
+    "disgust": null,
+    "fear": null,
+    "happiness": 0.35,
+    "neutral": 0.35,
+    "sadness": 0.85,
+    "surprise": 0.45
+  },
+  "class_evidence": {
+    "anger": {
+      "threshold": 0.4,
+      "accepted": 65,
+      "correct": 59,
+      "precision": 0.9076923076923077,
+      "wilson_lower": 0.8128778304982671
+    },
+    "contempt": {
+      "reason": "insufficient_class_reliability_evidence",
+      "predicted_after_agreement": 2
+    },
+    "disgust": {
+      "reason": "insufficient_class_reliability_evidence",
+      "predicted_after_agreement": 3
+    },
+    "fear": {
+      "reason": "insufficient_class_reliability_evidence",
+      "predicted_after_agreement": 8
+    },
+    "happiness": {
+      "threshold": 0.35,
+      "accepted": 236,
+      "correct": 230,
+      "precision": 0.9745762711864406,
+      "wilson_lower": 0.9456524354811741
+    },
+    "neutral": {
+      "threshold": 0.35,
+      "accepted": 274,
+      "correct": 251,
+      "precision": 0.916058394160584,
+      "wilson_lower": 0.8771953976354894
+    },
+    "sadness": {
+      "threshold": 0.85,
+      "accepted": 47,
+      "correct": 43,
+      "precision": 0.9148936170212766,
+      "wilson_lower": 0.8006819480497736
+    },
+    "surprise": {
+      "threshold": 0.45,
+      "accepted": 111,
+      "correct": 100,
+      "precision": 0.9009009009009009,
+      "wilson_lower": 0.8312201328230934
+    }
+  },
+  "class_target_precision": 0.9,
+  "class_min_examples": 20,
+  "class_min_wilson_lower": 0.75,
+  "test_used": false,
+  "rule": "Per-class largest acceptance with >=20 policy-fit predictions, >=.90 empirical precision and Wilson lower>=.75; otherwise abstain. Not a guarantee."
+}

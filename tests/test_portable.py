@@ -12,7 +12,8 @@ from unittest.mock import patch
 import numpy as np
 from PIL import Image
 from common.paths import project_root, project_path
-from common.messages import Face, BoundingBox
+from common.messages import Face, BoundingBox, FaceLandmarks
+from common.face_preprocessing import TEMPLATE, ALIGN_SIZE
 from ai_service.local_emotion_model import LocalEmotionModel
 from ai_service.analyzer import analyze_emotions, _recognizer
 from cv_service.detector import detect_faces
@@ -45,7 +46,7 @@ class PortabilityTests(unittest.TestCase):
 
     def test_service_inference_without_dataset(self):
         image=Image.new('RGB',(128,96),(250,10,10));b=io.BytesIO();image.save(b,'JPEG')
-        output=analyze_emotions(b.getvalue(),[Face(bbox=BoundingBox(x=10,y=10,width=50,height=60))])
+        output=analyze_emotions(b.getvalue(),[Face(bbox=BoundingBox(x=10,y=10,width=50,height=60),landmarks=FaceLandmarks(points=(TEMPLATE/(ALIGN_SIZE-1)*50+10).tolist()))])
         self.assertIn('face #1:',output)
         self.assertIsNone(analyze_emotions(b'bad',[]))
         with self.assertRaises(ValueError):analyze_emotions(b'bad',[Face(bbox=BoundingBox(x=0,y=0,width=5,height=5))])
@@ -83,7 +84,7 @@ class PortabilityTests(unittest.TestCase):
         source='\n'.join(''.join(c['source']) for c in nb['cells'])
         self.assertNotIn('df["y"] =',source)
         self.assertIn('frame["target"]',source)
-        self.assertIn('row["y"]',source)
+        self.assertIn('["x", "y", "width", "height"]',source)
         self.assertNotIn('/Users/',source)
         for cell in nb['cells']:
             if cell['cell_type']=='code':compile(''.join(cell['source']),'<notebook>','exec')
