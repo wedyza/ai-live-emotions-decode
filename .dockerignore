@@ -1,0 +1,29 @@
+# Секреты: в образ не попадают, настройки передаются переменными окружения (docker-compose.yaml).
+.env
+.env.*
+
+.git
+.venv
+venv
+**/__pycache__
+**/*.py[cod]
+**/.pytest_cache
+**/.mypy_cache
+**/.ruff_cache
+**/.ipynb_checkpoints
+.idea
+.vscode
+
+# Обучение, отчёты и данные — сервисам не нужны.
+datasets
+reports
+training
+notebooks
+tests
+tools
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.log
+tmp

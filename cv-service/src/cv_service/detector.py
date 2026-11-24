@@ -1,9 +1,11 @@
 import logging
 import threading
+from dataclasses import dataclass
 from typing import cast
 
 import cv2 as cv
 import numpy as np
+from common.face_preprocessing import prepare_face
 from common.messages import BoundingBox, Face, FaceLandmarks
 
 from model.yunet import YuNet
@@ -12,13 +14,60 @@ logger = logging.getLogger(__name__)
 _model_lock = threading.Lock()
 
 
-def detect_captures(jpeg: bytes, model: YuNet) -> list[Face]:
-    """Ищет лица на JPEG-кадре. Блокирующая (нагружает CPU), вызывать в отдельном потоке."""
+@dataclass(frozen=True)
+class FaceCapture:
+    face: Face
+    # PNG без потерь: ai-service должен получить ровно те пиксели, что дал бы prepare_face
+    # на кадре. None — лицо нельзя подготовить (например, вырожденные landmarks).
+    crop_png: bytes | None
+
+
+def _decode(jpeg: bytes) -> np.ndarray | None:
     image = cv.imdecode(np.frombuffer(jpeg, np.uint8), cv.IMREAD_COLOR)
     if image is None:
         logger.warning("failed to decode JPEG (%d bytes)", len(jpeg))
-        return []
+    return image
 
+
+def detect_captures(jpeg: bytes, model: YuNet) -> list[Face]:
+    """Ищет лица на JPEG-кадре. Блокирующая (нагружает CPU), вызывать в отдельном потоке."""
+    image = _decode(jpeg)
+    return [] if image is None else _detect(image, model)
+
+
+def capture_faces(jpeg: bytes, model: YuNet, crop_mode: str | None) -> list[FaceCapture]:
+    """Ищет лица и готовит их кропы тем же prepare_face, что и ai-service. Блокирующая.
+
+    crop_mode=None — только детекция, без кропов.
+    """
+    image = _decode(jpeg)
+    if image is None:
+        return []
+    faces = _detect(image, model)
+    if crop_mode is None:
+        return [FaceCapture(face, None) for face in faces]
+
+    # prepare_face работает с RGB; ai-service декодирует кадр через PIL, а OpenCV и PIL
+    # декодируют JPEG одинаково (проверяется в tests/test_face_crops.py).
+    rgb = cv.cvtColor(image, cv.COLOR_BGR2RGB)
+    captures: list[FaceCapture] = []
+    for i, face in enumerate(faces):
+        box = face.bbox
+        points = face.landmarks.points if face.landmarks is not None else None
+        try:
+            crop = prepare_face(rgb, (box.x, box.y, box.width, box.height), points, crop_mode)
+        except ValueError as exc:
+            logger.warning("no crop for face #%d: %s", i, exc)
+            captures.append(FaceCapture(face, None))
+            continue
+        ok, png = cv.imencode(".png", cv.cvtColor(crop, cv.COLOR_RGB2BGR))
+        if not ok:
+            raise RuntimeError("failed to encode face crop as PNG")
+        captures.append(FaceCapture(face, png.tobytes()))
+    return captures
+
+
+def _detect(image: np.ndarray, model: YuNet) -> list[Face]:
     height, width = cast(tuple[int, int], image.shape[:2])
     # YuNet требует, чтобы входной размер совпадал с размером кадра.
     # Input-size mutation and forward must be one atomic operation.

@@ -4,6 +4,7 @@ import io
 import logging
 import threading
 import urllib.request  # hsemotion-onnx 0.3.1 accesses urllib.request without importing it
+from collections.abc import Sequence
 from functools import lru_cache
 
 import numpy as np
@@ -36,43 +37,69 @@ def _recognizer():
     return HSEmotionRecognizer(model_name="enet_b0_8_best_afew")
 
 
-def analyze_emotions(jpeg: bytes, faces: list[Face]) -> str | None:
+def expected_crop_mode() -> str:
+    """Режим common.face_preprocessing, на котором обучена выбранная модель."""
+    return getattr(_recognizer(), "crop_mode", BBOX)
+
+
+def _decode_rgb(data: bytes, what: str) -> np.ndarray:
+    try:
+        with Image.open(io.BytesIO(data)) as image:
+            return np.asarray(image.convert("RGB")).copy()
+    except (UnidentifiedImageError, OSError) as exc:
+        raise ValueError(f"Cannot decode {what}") from exc
+
+
+def analyze_emotions(
+    jpeg: bytes | None, faces: list[Face], crops: Sequence[bytes | None] | None = None
+) -> str | None:
     """Return per-face expression predictions; no faces means no notification.
 
     HSEmotion receives RGB face crops, not the full frame. Percentages are model
     softmax scores, not calibrated confidence or a diagnosis of a person's mood.
     Model initialization and inference are serialized because consumers use threads.
+
+    crops[i] — готовый кроп лица faces[i] от cv-service (PNG), уже подготовленный в режиме
+    expected_crop_mode(). Для лиц без кропа лицо вырезается из кадра jpeg; кадр нужен,
+    только если такие лица есть.
     """
     if not faces:
         return None
-    try:
-        with Image.open(io.BytesIO(jpeg)) as image:
-            rgb = np.asarray(image.convert("RGB")).copy()
-    except (UnidentifiedImageError, OSError) as exc:
-        raise ValueError("Cannot decode frame image") from exc
-    h, w = rgb.shape[:2]
+    if crops is not None and len(crops) != len(faces):
+        raise ValueError("crops must match faces one-to-one")
+    face_crops: Sequence[bytes | None] = crops if crops is not None else [None] * len(faces)
+    rgb: np.ndarray | None = None
+    if any(crop is None for crop in face_crops):
+        if jpeg is None:
+            raise ValueError("Frame image is required for faces without crops")
+        rgb = _decode_rgb(jpeg, "frame image")
     results = []
     with _lock:
-        for i, face in enumerate(faces, 1):
-            box = face.bbox
-            if box.width <= 0 or box.height <= 0:
-                logger.warning("Skipping invalid face bbox: %s", box)
-                continue
-            x1, y1 = max(0, box.x), max(0, box.y)
-            x2, y2 = min(w, box.x + box.width), min(h, box.y + box.height)
-            if x2 <= x1 or y2 <= y1:
-                logger.warning("Skipping bbox outside image: %s", box)
-                continue
+        for i, (face, crop_png) in enumerate(zip(faces, face_crops), 1):
             recognizer = _recognizer()
-            mode = getattr(recognizer, "crop_mode", BBOX)
             points = face.landmarks.points if face.landmarks is not None else None
-            try:
-                crop = prepare_face(rgb, (box.x, box.y, box.width, box.height), points, mode)
-            except ValueError as exc:
-                logger.warning("Skipping face #%d: %s", i, exc)
-                if hasattr(recognizer, "predict_decision"):
-                    results.append(f"face #{i}: uncertain (invalid_face_geometry)")
-                continue
+            if crop_png is not None:
+                crop = _decode_rgb(crop_png, f"crop of face #{i}")
+            else:
+                assert rgb is not None
+                h, w = rgb.shape[:2]
+                box = face.bbox
+                if box.width <= 0 or box.height <= 0:
+                    logger.warning("Skipping invalid face bbox: %s", box)
+                    continue
+                x1, y1 = max(0, box.x), max(0, box.y)
+                x2, y2 = min(w, box.x + box.width), min(h, box.y + box.height)
+                if x2 <= x1 or y2 <= y1:
+                    logger.warning("Skipping bbox outside image: %s", box)
+                    continue
+                mode = getattr(recognizer, "crop_mode", BBOX)
+                try:
+                    crop = prepare_face(rgb, (box.x, box.y, box.width, box.height), points, mode)
+                except ValueError as exc:
+                    logger.warning("Skipping face #%d: %s", i, exc)
+                    if hasattr(recognizer, "predict_decision"):
+                        results.append(f"face #{i}: uncertain (invalid_face_geometry)")
+                    continue
             if hasattr(recognizer, "predict_decision"):
                 decision = recognizer.predict_decision(crop)
                 if not decision.accepted:

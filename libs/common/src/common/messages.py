@@ -40,8 +40,12 @@ class Face(BaseModel):
     bbox: BoundingBox
     landmarks: FaceLandmarks | None = None
     det_score: float | None = Field(default=None, ge=0, le=1)
-    # Вырезанное лицо, если cv-service сохраняет кропы.
+    # Готовый RGB-кроп (PNG без потерь), который cv-service подготовил через prepare_face.
+    # crop_mode — режим common.face_preprocessing (BBOX / ALIGNED), которым он сделан:
+    # ai-service берёт кроп, только если режим совпадает с режимом его модели,
+    # иначе сам вырезает лицо из кадра по bbox и landmarks.
     crop_s3_key: str | None = None
+    crop_mode: str | None = None
 
 
 class AnalyzeMessage(Message):
