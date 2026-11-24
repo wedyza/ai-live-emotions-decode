@@ -1,0 +1,8 @@
+{
+  "validation_images": 183,
+  "matching_classes": 183,
+  "max_absolute_difference": 5.7220458984375e-05,
+  "preprocessing": "yunet5_similarity_v1",
+  "rtol": 0.001,
+  "atol": 0.0001
+}

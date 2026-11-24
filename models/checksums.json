@@ -1,0 +1,19 @@
+{
+  "models/emotion_experiment/model.onnx": "03c185b89d04854746fa9dd2f102ecb46b8e87ab5e5924a36c64bf2178d85ecb",
+  "models/emotion_experiment/model.onnx.json": "aa8c0e44c15085f11f7b8b0b43685770a6352985833bcd56559993c29b0886d4",
+  "cv-service/src/model/weights/face_detection_yunet_2023mar.onnx": "8f2383e4dd3cfbb4553ea8718107fc0423210dc964f9f4280604804ed2552fa4",
+  "models/emotion_aligned/model.onnx": "cbc1a3bf0f704435e58e03e8684dc44cd21bdec23d64af0c7a015181c7d3f56e",
+  "models/emotion_aligned/model.onnx.json": "48113d9ae8052dd321fd14c67c4ad4814abb25ae944f3edc9a3da6a91cbff7e5",
+  "models/emotion_reference/model.onnx": "e47873934e3c384dbc6695b684038c4fad579528d05f6faeb19df4067590e16c",
+  "models/emotion_reference/model.onnx.json": "c845cc9ba1f48ab027be044c94026e8e7f67fec1afaef289b9f297f72ab19187",
+  "models/emotion_head_candidate/model.onnx": "e5ae3970d28ba246ff1c1513f8763bb90fefd732e5b2b85b21bcfde9bb2217e4",
+  "models/emotion_head_candidate/model.onnx.json": "75a1efd72c7d4af57f6398df459988fbf8d41d30e7d0a769a29fb64dd42f3ffc",
+  "models/emotion_head_candidate/training.json": "917ae3fa9f14ea6a1a98ad491dc91fdc52566415eca99c69f8ae3cc39714ef6f",
+  "models/emotion_reliable/policy.json": "113e1f2f04f03935168ad57acebc2316ff2511a02dd37952bbf479d70398d5a5",
+  "models/emotion_reliable/model.onnx": "e5ae3970d28ba246ff1c1513f8763bb90fefd732e5b2b85b21bcfde9bb2217e4",
+  "models/emotion_reliable/model.onnx.json": "75a1efd72c7d4af57f6398df459988fbf8d41d30e7d0a769a29fb64dd42f3ffc",
+  "models/emotion_consensus/policy.json": "1f386a2b9b893ad5010b04dd16c54f9ce74e0b669b96698e68c41d5376c974f8",
+  "models/emotion_consensus/model.onnx": "0e86fc90af6969ff53c6941814c06e83c20f1cb0c4911deb534faeb8e30ec8dc",
+  "models/emotion_consensus/model.onnx.json": "4ed014514a0b726462f6a2fcbffb185f7f9a2fb685c221e11d2ba954c11783c6",
+  "models/emotion_consensus/head_state.pth": "90e98c2b50fee631c3d85613bab325273e85ea67227546195b3b65ee89007e05"
+}

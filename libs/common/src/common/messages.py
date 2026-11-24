@@ -1,6 +1,6 @@
 from typing import ClassVar
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field, FiniteFloat
 
 
 class Message(BaseModel):
@@ -31,8 +31,15 @@ class BoundingBox(BaseModel):
     height: int
 
 
+class FaceLandmarks(BaseModel):
+    # Full-frame pixel coordinates, in YuNet order; never crop-relative.
+    points: list[tuple[FiniteFloat, FiniteFloat]] = Field(min_length=5, max_length=5)
+
+
 class Face(BaseModel):
     bbox: BoundingBox
+    landmarks: FaceLandmarks | None = None
+    det_score: float | None = Field(default=None, ge=0, le=1)
     # Вырезанное лицо, если cv-service сохраняет кропы.
     crop_s3_key: str | None = None
 

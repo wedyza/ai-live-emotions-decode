@@ -1,0 +1,21 @@
+{
+  "repository": "Aaryan333/fer2013_train_publicTest_privateTest",
+  "revision": "da8d1643649c86bfc2cffba5b744b51fdf329212",
+  "files": [
+    {
+      "file": "privateTest-00000-of-00001-4b8a0715cf1b7560.parquet",
+      "url": "https://huggingface.co/datasets/Aaryan333/fer2013_train_publicTest_privateTest/resolve/da8d1643649c86bfc2cffba5b744b51fdf329212/data/privateTest-00000-of-00001-4b8a0715cf1b7560.parquet",
+      "sha256": "e0b74317d8d3defc79961a297a651e23ee8b0785669484a258e7a389be1fcea0"
+    },
+    {
+      "file": "publicTest-00000-of-00001-f41bb7384b8aad6e.parquet",
+      "url": "https://huggingface.co/datasets/Aaryan333/fer2013_train_publicTest_privateTest/resolve/da8d1643649c86bfc2cffba5b744b51fdf329212/data/publicTest-00000-of-00001-f41bb7384b8aad6e.parquet",
+      "sha256": "e9efe94c45b5af29ec2825abb8f0bf3583450edb915b2c6ab6d5566afbffc5a1"
+    },
+    {
+      "file": "train-00000-of-00001-5eab84e1c6a2fc27.parquet",
+      "url": "https://huggingface.co/datasets/Aaryan333/fer2013_train_publicTest_privateTest/resolve/da8d1643649c86bfc2cffba5b744b51fdf329212/data/train-00000-of-00001-5eab84e1c6a2fc27.parquet",
+      "sha256": "b1c4bee933d41947d7d67648a54f3877de9365703f40117e0d59495c8eb6647a"
+    }
+  ]
+}

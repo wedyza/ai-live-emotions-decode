@@ -1,3 +1,4 @@
+from common.paths import project_root
 from typing import ClassVar
 
 from common.settings import RabbitSettings, S3Settings
@@ -10,14 +11,16 @@ class Settings(BaseSettings):
     model_config: ClassVar[SettingsConfigDict] = SettingsConfigDict(
         env_prefix="CV_",
         env_nested_delimiter="__",
-        env_file=".env",
+        env_file=project_root() / ".env",
         extra="ignore",
     )
 
     # Детекция лиц нагружает CPU: не даём RabbitMQ присылать слишком много кадров разом.
-    rabbit: RabbitSettings = Field(default_factory=lambda: RabbitSettings(prefetch_count=4))
+    rabbit: RabbitSettings = Field(
+        default_factory=lambda: RabbitSettings(prefetch_count=1)
+    )
     s3: S3Settings = Field(default_factory=S3Settings)
-    model_path: str = 'cv-service/src/model/weights/face_detection_yunet_2023mar.onnx'
+    model_path: str = "cv-service/src/model/weights/face_detection_yunet_2023mar.onnx"
 
 
 settings = Settings()

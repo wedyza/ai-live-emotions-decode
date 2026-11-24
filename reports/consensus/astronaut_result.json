@@ -1,0 +1,41 @@
+{
+  "faces_detected": 1,
+  "results": [
+    {
+      "face": 1,
+      "accepted": true,
+      "expression": "happiness",
+      "reason": null,
+      "model_score": 0.999999998632011,
+      "bbox": [
+        178,
+        62,
+        90,
+        114
+      ],
+      "landmarks": [
+        [
+          200.19290161132812,
+          101.88575744628906
+        ],
+        [
+          247.08741760253906,
+          102.82365417480469
+        ],
+        [
+          220.16925048828125,
+          124.56436920166016
+        ],
+        [
+          198.47335815429688,
+          142.71963500976562
+        ],
+        [
+          239.29930114746094,
+          143.62843322753906
+        ]
+      ]
+    }
+  ],
+  "note": "Expressions are model categories, not a diagnosis of mood. uncertain means abstention."
+}

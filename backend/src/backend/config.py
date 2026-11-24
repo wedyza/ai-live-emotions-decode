@@ -1,3 +1,4 @@
+from common.paths import project_root
 from typing import ClassVar
 
 from common.settings import RabbitSettings, S3Settings
@@ -10,7 +11,7 @@ class Settings(BaseSettings):
     model_config: ClassVar[SettingsConfigDict] = SettingsConfigDict(
         env_prefix="BACKEND_",
         env_nested_delimiter="__",
-        env_file=".env",
+        env_file=project_root() / ".env",
         extra="ignore",
     )
 

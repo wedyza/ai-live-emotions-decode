@@ -8,6 +8,7 @@
 import cv2 as cv
 import numpy as np
 from cv_service.config import settings
+from common.paths import project_path
 
 
 class YuNet:
@@ -69,4 +70,4 @@ def _yunet(
         return yunet
     return get_yunet
 
-get_yunet = _yunet(settings.model_path)
+get_yunet = _yunet(str(project_path(settings.model_path)))

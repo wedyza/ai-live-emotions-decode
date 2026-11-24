@@ -1,0 +1,8 @@
+{
+  "validation_images": 183,
+  "matching_classes": 183,
+  "max_absolute_difference": 2.002716064453125e-05,
+  "preprocessing": "bbox without margin or alignment",
+  "rtol": 0.001,
+  "atol": 0.0001
+}

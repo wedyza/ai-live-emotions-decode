@@ -1,0 +1,105 @@
+{
+  "baselines_selection": {
+    "original": {
+      "macro_f1_supported": 0.6183668820266408,
+      "accuracy_all": 0.6160877513711152
+    },
+    "v1": {
+      "macro_f1_supported": 0.7027228016614049,
+      "accuracy_all": 0.7029250457038391
+    }
+  },
+  "best": {
+    "score": 0.861907738310542,
+    "source": "ferplus_head",
+    "step": 200,
+    "strength": 0.0
+  },
+  "selection_scored_classes": [
+    "anger",
+    "happiness",
+    "neutral",
+    "sadness",
+    "surprise"
+  ],
+  "history": [
+    {
+      "strength": 0.0,
+      "step": 100,
+      "macro_f1_supported": 0.8560538351862146,
+      "accuracy_all": 0.8665447897623401
+    },
+    {
+      "strength": 0.0,
+      "step": 200,
+      "macro_f1_supported": 0.861907738310542,
+      "accuracy_all": 0.8738574040219378
+    },
+    {
+      "strength": 0.0,
+      "step": 400,
+      "macro_f1_supported": 0.861221499180236,
+      "accuracy_all": 0.8738574040219378
+    },
+    {
+      "strength": 0.25,
+      "step": 100,
+      "macro_f1_supported": 0.8230375675802678,
+      "accuracy_all": 0.8354661791590493
+    },
+    {
+      "strength": 0.25,
+      "step": 200,
+      "macro_f1_supported": 0.8332677718233974,
+      "accuracy_all": 0.8446069469835467
+    },
+    {
+      "strength": 0.25,
+      "step": 400,
+      "macro_f1_supported": 0.8351767054204222,
+      "accuracy_all": 0.8482632541133455
+    },
+    {
+      "strength": 1.0,
+      "step": 100,
+      "macro_f1_supported": 0.7596846829202715,
+      "accuracy_all": 0.7650822669104205
+    },
+    {
+      "strength": 1.0,
+      "step": 200,
+      "macro_f1_supported": 0.7677337616237547,
+      "accuracy_all": 0.7723948811700183
+    },
+    {
+      "strength": 1.0,
+      "step": 400,
+      "macro_f1_supported": 0.7714933439438177,
+      "accuracy_all": 0.7751371115173674
+    },
+    {
+      "strength": 4.0,
+      "step": 100,
+      "macro_f1_supported": 0.6695626652433128,
+      "accuracy_all": 0.6709323583180987
+    },
+    {
+      "strength": 4.0,
+      "step": 200,
+      "macro_f1_supported": 0.6723618358374457,
+      "accuracy_all": 0.6745886654478976
+    },
+    {
+      "strength": 4.0,
+      "step": 400,
+      "macro_f1_supported": 0.6779327782602936,
+      "accuracy_all": 0.6782449725776966
+    }
+  ],
+  "train_selected": 3324,
+  "train_detected": 3280,
+  "temperature_nll_before": 0.3844522502309756,
+  "temperature_nll_after": 0.2830467391852545,
+  "holdout_used": false,
+  "policy_sha256": "1f386a2b9b893ad5010b04dd16c54f9ce74e0b669b96698e68c41d5376c974f8"
+}

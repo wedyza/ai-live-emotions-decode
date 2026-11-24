@@ -1,0 +1,77 @@
+{
+  "verified_original_rows": 35887,
+  "pixel_and_original_label_matches": 35887,
+  "strong_majority_rows": 26114,
+  "conflicting_majority_hashes": 0,
+  "roles": {
+    "train": {
+      "n": 3324,
+      "classes": {
+        "anger": 600,
+        "contempt": 53,
+        "disgust": 38,
+        "fear": 233,
+        "happiness": 600,
+        "neutral": 600,
+        "sadness": 600,
+        "surprise": 600
+      }
+    },
+    "selection": {
+      "n": 1094,
+      "classes": {
+        "anger": 85,
+        "contempt": 3,
+        "disgust": 4,
+        "fear": 14,
+        "happiness": 336,
+        "neutral": 407,
+        "sadness": 102,
+        "surprise": 143
+      }
+    },
+    "calibration": {
+      "n": 819,
+      "classes": {
+        "anger": 64,
+        "contempt": 2,
+        "disgust": 3,
+        "fear": 10,
+        "happiness": 252,
+        "neutral": 305,
+        "sadness": 76,
+        "surprise": 107
+      }
+    },
+    "policy": {
+      "n": 827,
+      "classes": {
+        "anger": 65,
+        "contempt": 3,
+        "disgust": 3,
+        "fear": 11,
+        "happiness": 253,
+        "neutral": 306,
+        "sadness": 77,
+        "surprise": 109
+      }
+    },
+    "holdout": {
+      "n": 804,
+      "classes": {
+        "anger": 150,
+        "contempt": 8,
+        "disgust": 1,
+        "fear": 45,
+        "happiness": 150,
+        "neutral": 150,
+        "sadness": 150,
+        "surprise": 150
+      }
+    }
+  },
+  "new_holdout_used_in_previous_training": false,
+  "private_test_used_for_v2_selection": false,
+  "seed": 2026111601,
+  "strong_rule": "total10, majority>=6, unknown<=1, not-a-face=0; conflicting-majority hashes removed"
+}

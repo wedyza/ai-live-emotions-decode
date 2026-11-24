@@ -1,0 +1,8 @@
+{
+  "checked_images": 20,
+  "checked_views": 40,
+  "decisions_matching": 20,
+  "max_absolute_difference": 5.155801773071289e-06,
+  "rtol": 0.001,
+  "atol": 0.0001
+}

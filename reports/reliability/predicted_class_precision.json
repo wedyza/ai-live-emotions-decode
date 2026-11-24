@@ -1,0 +1,42 @@
+{
+  "anger": {
+    "predicted_count": 99,
+    "correct": 87,
+    "precision": 0.8787878787878788
+  },
+  "contempt": {
+    "predicted_count": 0,
+    "correct": 0,
+    "precision": null
+  },
+  "disgust": {
+    "predicted_count": 20,
+    "correct": 9,
+    "precision": 0.45
+  },
+  "fear": {
+    "predicted_count": 32,
+    "correct": 29,
+    "precision": 0.90625
+  },
+  "happiness": {
+    "predicted_count": 603,
+    "correct": 583,
+    "precision": 0.966832504145937
+  },
+  "neutral": {
+    "predicted_count": 83,
+    "correct": 72,
+    "precision": 0.8674698795180723
+  },
+  "sadness": {
+    "predicted_count": 78,
+    "correct": 58,
+    "precision": 0.7435897435897436
+  },
+  "surprise": {
+    "predicted_count": 156,
+    "correct": 139,
+    "precision": 0.8910256410256411
+  }
+}

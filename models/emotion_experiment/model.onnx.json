@@ -1,0 +1,29 @@
+{
+  "classes": [
+    "anger",
+    "contempt",
+    "disgust",
+    "fear",
+    "happiness",
+    "neutral",
+    "sadness",
+    "surprise"
+  ],
+  "img_size": 224,
+  "mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "input": "RGB",
+  "resize": "PIL bilinear",
+  "crop": "bbox without margin or alignment",
+  "batch_size": 1,
+  "output": "logits",
+  "best_epoch": 2
+}

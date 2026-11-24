@@ -1,3 +1,8 @@
+import os
+
+# Disable ONNX Runtime telemetry before any model runtime is imported.
+os.environ["ORT_DISABLE_TELEMETRY"] = "1"
+
 def main() -> None:
     import asyncio
 

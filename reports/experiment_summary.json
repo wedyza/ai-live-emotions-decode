@@ -1,0 +1,95 @@
+{
+  "model_name": "enet_b0_8_best_afew",
+  "cfg": {
+    "model_name": "enet_b0_8_best_afew",
+    "epochs_head": 2,
+    "epochs_full": 3,
+    "batch_size": 16,
+    "lr_head": 0.001,
+    "lr_full": 0.0001,
+    "weight_decay": 0.0001,
+    "label_smoothing": 0.1,
+    "balance": "sampler",
+    "patience": 5,
+    "include_dups": false,
+    "n_boot": 2000,
+    "bootstrap_by": "clip",
+    "seed": 42,
+    "num_workers": 0
+  },
+  "classes": [
+    "anger",
+    "contempt",
+    "disgust",
+    "fear",
+    "happiness",
+    "neutral",
+    "sadness",
+    "surprise"
+  ],
+  "best_epoch": 2,
+  "best_val_macro_f1": 0.4896589218618204,
+  "test_before": {
+    "accuracy": 0.3580645161290323,
+    "balanced_accuracy": 0.3685037878787879,
+    "macro_f1": 0.4076108392367047,
+    "weighted_f1": 0.41056755008193274
+  },
+  "test_after": {
+    "accuracy": 0.5064516129032258,
+    "balanced_accuracy": 0.46282196969696976,
+    "macro_f1": 0.4497329873018184,
+    "weighted_f1": 0.5144267702476512
+  },
+  "bootstrap_ci95": {
+    "accuracy": {
+      "before_lo": 0.2697332329648573,
+      "before_hi": 0.4473062497996515,
+      "after_lo": 0.4069228115141956,
+      "after_hi": 0.5957462734106255,
+      "delta_lo": 0.06179442686536696,
+      "delta_hi": 0.22930318035075473
+    },
+    "balanced_accuracy": {
+      "before_lo": 0.28150117460602125,
+      "before_hi": 0.45154652102959936,
+      "after_lo": 0.38174808243402575,
+      "after_hi": 0.5475835495448468,
+      "delta_lo": 0.024993199894230052,
+      "delta_hi": 0.15723019700864457
+    },
+    "macro_f1": {
+      "before_lo": 0.3047368287285008,
+      "before_hi": 0.4915909978199136,
+      "after_lo": 0.35100416151729724,
+      "after_hi": 0.5304497619989872,
+      "delta_lo": -0.027056627395870284,
+      "delta_hi": 0.10996283657476781
+    },
+    "weighted_f1": {
+      "before_lo": 0.31835769911422934,
+      "before_hi": 0.5076294696281051,
+      "after_lo": 0.4127136221424441,
+      "after_hi": 0.6153733454467051,
+      "delta_lo": 0.022577156095073155,
+      "delta_hi": 0.18873397670777162
+    }
+  },
+  "bootstrap_group": "clip_id",
+  "test_frames": 310,
+  "test_clips": 52,
+  "limitations": [
+    "Labels inherited from videos, not verified per frame",
+    "No contempt, fear or sadness examples",
+    "Macro-F1 delta interval includes zero",
+    "Bootstrap does not group multiple clips by participant"
+  ],
+  "status": "experimental; macro-F1 improvement not established by clip bootstrap",
+  "classes_with_test_support": [
+    "anger",
+    "disgust",
+    "happiness",
+    "neutral",
+    "surprise"
+  ]
+}

@@ -1,0 +1,1 @@
+{"minimum_selective_accuracy":0.90,"minimum_coverage":0.20,"require_accuracy_at_least_previous_policy":true,"require_raw_accuracy_at_least_previous_minus":0.01,"tuning_on_holdout":false,"note":"One predeclared release gate. No threshold or weight changes after holdout evaluation."}

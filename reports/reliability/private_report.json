@@ -1,0 +1,240 @@
+{
+  "frozen_policy_sha256": "113e1f2f04f03935168ad57acebc2316ff2511a02dd37952bbf479d70398d5a5",
+  "n_test": 3464,
+  "exact_duplicates_removed": 125,
+  "selected_model_all_detected": {
+    "n": 3464,
+    "answered": 3414,
+    "coverage": 0.9855658198614319,
+    "accuracy_answered": 0.6414762741652021,
+    "correct_all": 2190,
+    "wrong_all": 1224,
+    "correct_fraction_all": 0.6322170900692841,
+    "macro_f1_answered": 0.576540225842338
+  },
+  "selective": {
+    "n": 3464,
+    "answered": 1071,
+    "coverage": 0.3091801385681293,
+    "accuracy_answered": 0.9122315592903828,
+    "correct_all": 977,
+    "wrong_all": 94,
+    "correct_fraction_all": 0.28204387990762125,
+    "macro_f1_answered": 0.80310703684943,
+    "wilson_lower": 0.8937778500545538,
+    "wilson_upper": 0.9277385482686968
+  },
+  "baseline": {
+    "head_candidate": {
+      "n": 3464,
+      "answered": 3414,
+      "coverage": 0.9855658198614319,
+      "accuracy_answered": 0.6423550087873462,
+      "correct_all": 2193,
+      "wrong_all": 1221,
+      "correct_fraction_all": 0.6330831408775982,
+      "macro_f1_answered": 0.5796466259872207
+    },
+    "pretrained_aligned": {
+      "n": 3464,
+      "answered": 3414,
+      "coverage": 0.9855658198614319,
+      "accuracy_answered": 0.5644405389572349,
+      "correct_all": 1927,
+      "wrong_all": 1487,
+      "correct_fraction_all": 0.5562933025404158,
+      "macro_f1_answered": 0.4900865685895032
+    },
+    "finetuned_bbox": {
+      "n": 3464,
+      "answered": 3414,
+      "coverage": 0.9855658198614319,
+      "accuracy_answered": 0.3995313415348565,
+      "correct_all": 1364,
+      "wrong_all": 2050,
+      "correct_fraction_all": 0.39376443418013857,
+      "macro_f1_answered": 0.3486940205567023
+    },
+    "finetuned_aligned": {
+      "n": 3464,
+      "answered": 3414,
+      "coverage": 0.9855658198614319,
+      "accuracy_answered": 0.35559461042765084,
+      "correct_all": 1214,
+      "wrong_all": 2200,
+      "correct_fraction_all": 0.3504618937644342,
+      "macro_f1_answered": 0.31677939249864645
+    }
+  },
+  "per_class": {
+    "anger": {
+      "n": 473,
+      "answered": 106,
+      "coverage": 0.22410147991543342,
+      "accuracy_answered": 0.8207547169811321,
+      "correct_all": 87,
+      "wrong_all": 19,
+      "correct_fraction_all": 0.1839323467230444
+    },
+    "disgust": {
+      "n": 38,
+      "answered": 9,
+      "coverage": 0.23684210526315788,
+      "accuracy_answered": 1.0,
+      "correct_all": 9,
+      "wrong_all": 0,
+      "correct_fraction_all": 0.23684210526315788
+    },
+    "fear": {
+      "n": 513,
+      "answered": 60,
+      "coverage": 0.11695906432748537,
+      "accuracy_answered": 0.48333333333333334,
+      "correct_all": 29,
+      "wrong_all": 31,
+      "correct_fraction_all": 0.056530214424951264
+    },
+    "happiness": {
+      "n": 870,
+      "answered": 592,
+      "coverage": 0.6804597701149425,
+      "accuracy_answered": 0.9847972972972973,
+      "correct_all": 583,
+      "wrong_all": 9,
+      "correct_fraction_all": 0.6701149425287356
+    },
+    "neutral": {
+      "n": 615,
+      "answered": 87,
+      "coverage": 0.14146341463414633,
+      "accuracy_answered": 0.8275862068965517,
+      "correct_all": 72,
+      "wrong_all": 15,
+      "correct_fraction_all": 0.11707317073170732
+    },
+    "sadness": {
+      "n": 587,
+      "answered": 71,
+      "coverage": 0.12095400340715502,
+      "accuracy_answered": 0.8169014084507042,
+      "correct_all": 58,
+      "wrong_all": 13,
+      "correct_fraction_all": 0.09880749574105621
+    },
+    "surprise": {
+      "n": 368,
+      "answered": 146,
+      "coverage": 0.3967391304347826,
+      "accuracy_answered": 0.952054794520548,
+      "correct_all": 139,
+      "wrong_all": 7,
+      "correct_fraction_all": 0.37771739130434784
+    }
+  },
+  "confusion_matrix_detected": [
+    [
+      263,
+      0,
+      45,
+      57,
+      8,
+      32,
+      50,
+      15
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      5,
+      0,
+      23,
+      5,
+      0,
+      0,
+      4,
+      1
+    ],
+    [
+      75,
+      0,
+      19,
+      162,
+      10,
+      44,
+      119,
+      72
+    ],
+    [
+      16,
+      0,
+      5,
+      23,
+      734,
+      31,
+      10,
+      42
+    ],
+    [
+      39,
+      0,
+      3,
+      34,
+      27,
+      398,
+      89,
+      16
+    ],
+    [
+      59,
+      0,
+      14,
+      47,
+      14,
+      103,
+      327,
+      10
+    ],
+    [
+      8,
+      0,
+      1,
+      48,
+      17,
+      5,
+      2,
+      283
+    ]
+  ],
+  "classes": [
+    "anger",
+    "contempt",
+    "disgust",
+    "fear",
+    "happiness",
+    "neutral",
+    "sadness",
+    "surprise"
+  ],
+  "accepted_same_images_accuracy_delta_vs_old_bbox": 0.29318394024276373,
+  "accepted_same_images_delta_95ci": [
+    0.26436323061873307,
+    0.32008742258722833
+  ],
+  "head_vs_pretrained_raw_same_detected": {
+    "n": 3414,
+    "accuracy_delta": 0.07791446983011131,
+    "delta_95ci": [
+      0.06355448154657294,
+      0.09198154657293493
+    ]
+  },
+  "warning": "FER2013 mirror labels may be noisy. Exact pixel duplicates removed; identities unavailable. Unknown overlap with HSEmotion pretraining. Scores do not establish mood. No eight-class evidence: no contempt ground truth."
+}

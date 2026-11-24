@@ -7,7 +7,7 @@ from common.messages import AnalyzeMessage, Face, FaceCaptureMessage
 from common.storage import S3Storage
 
 from cv_service.config import settings
-from cv_service.detector import detect_faces
+from cv_service.detector import detect_captures
 from model.yunet import get_yunet
 
 logger = logging.getLogger(__name__)
@@ -27,15 +27,15 @@ class FaceCaptureHandler:
     async def __call__(self, message: FaceCaptureMessage) -> None:
         frame = message.frame
         jpeg = await self._storage.get_async(frame.s3_key)
-        boxes = await asyncio.to_thread(detect_faces, jpeg, self._model)
-        if not boxes:
+        faces = await asyncio.to_thread(detect_captures, jpeg, self._model)
+        if not faces:
             logger.debug("no faces on %s", frame.frame_id)
             return
 
         await self._publisher.publish(
-            AnalyzeMessage(frame=frame, faces=[Face(bbox=box) for box in boxes])
+            AnalyzeMessage(frame=frame, faces=faces)
         )
-        logger.info("%d faces on %s", len(boxes), frame.frame_id)
+        logger.info("%d faces on %s", len(faces), frame.frame_id)
 
 
 async def run() -> None:
