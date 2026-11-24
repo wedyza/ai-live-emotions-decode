@@ -1,5 +1,6 @@
+from common.face_preprocessing import ALIGNED
 from common.paths import project_root
-from typing import ClassVar
+from typing import ClassVar, Literal
 
 from common.settings import RabbitSettings, S3Settings
 from pydantic import Field
@@ -21,6 +22,12 @@ class Settings(BaseSettings):
     )
     s3: S3Settings = Field(default_factory=S3Settings)
     model_path: str = "cv-service/src/model/weights/face_detection_yunet_2023mar.onnx"
+
+    # Кропы лиц в S3 (<frame_id>_f<i>.png). Режим должен совпадать с crop у модели ai-service
+    # (models/*/model.onnx.json): ALIGNED для reliable/variant1/aligned, BBOX для experimental/pretrained.
+    # При несовпадении ai-service не ломается, а сам режет лицо из кадра — просто без выигрыша.
+    save_crops: bool = True
+    face_crop: Literal["yunet5_similarity_v1", "bbox without margin or alignment"] = ALIGNED
 
 
 settings = Settings()

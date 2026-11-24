@@ -11,6 +11,7 @@ import time
 
 ROOT = Path(__file__).resolve().parents[1]
 SERVICES = ['notification_service', 'ai_service', 'cv_service', 'backend']
+INFRA = ['postgres', 'minio', 'minio-console', 'rabbitmq']
 
 
 def check():
@@ -48,8 +49,12 @@ def main():
             os.environ['AI_EMOTION_MODEL_PATH']={'experimental':'models/emotion_experiment/model.onnx','aligned':'models/emotion_aligned/model.onnx','adapted':'models/emotion_head_candidate/model.onnx'}[a.model]
     if a.model=='variant1':
         os.environ['AI_EMOTION_MODEL']='reliable';os.environ['AI_RELIABILITY_PATH']='models/emotion_consensus'
+    if a.model in ['experimental','pretrained']:
+        # Эти модели обучены на bbox-кропах: cv-service должен резать лица так же.
+        os.environ.setdefault('CV_FACE_CROP','bbox without margin or alignment')
     if a.command in ['infra','status']:
-        args=['docker','compose']+(['up','-d','--wait'] if a.command=='infra' else ['ps'])
+        # Только инфраструктура: Python-сервисы из compose заняли бы те же очереди и порт, что и `start`.
+        args=['docker','compose']+(['up','-d','--wait',*INFRA] if a.command=='infra' else ['ps'])
         try:subprocess.run(args,cwd=ROOT,check=True)
         except FileNotFoundError:raise SystemExit('Docker not found. Install/start Docker Desktop with Compose.')
         return

@@ -1,5 +1,21 @@
 name: ai-live-emotions-decode
 
+# Общие значения для Python-сервисов. Адреса — внутри сети compose (rabbitmq, minio),
+# логины и пароли — те же переменные, что у самих контейнеров RabbitMQ и MinIO.
+x-rabbit-url: &rabbit-url amqp://${RABBITMQ_USER:-guest}:${RABBITMQ_PASSWORD:-guest}@rabbitmq:5672/
+x-s3-endpoint: &s3-endpoint http://minio:9000
+x-s3-access-key: &s3-access-key ${MINIO_ROOT_USER:-minioadmin}
+x-s3-secret-key: &s3-secret-key ${MINIO_ROOT_PASSWORD:-minioadmin}
+x-s3-bucket: &s3-bucket ${MINIO_BUCKET:-frames}
+
+x-app: &app
+  restart: unless-stopped
+  depends_on:
+    rabbitmq:
+      condition: service_healthy
+    minio:
+      condition: service_healthy
+
 # Пока данные хранятся в tmpfs (в RAM) с ограничением размера: на диск ничего не пишется,
 # а при удалении или перезапуске контейнера всё стирается.
 
@@ -75,3 +91,80 @@ services:
       interval: 10s
       timeout: 10s
       retries: 10
+
+  # ---------- Python-сервисы (Dockerfile в корне, один на всех) ----------
+  # Локальный запуск без Docker (tools/project.py start) поднимает только инфраструктуру выше;
+  # не запускайте оба варианта одновременно — они делят очереди и порт 8000.
+
+  backend:
+    <<: *app
+    build:
+      context: .
+      target: app
+      args: { PACKAGE: backend }
+    image: ai-live-emotions-decode/backend
+    container_name: backend
+    environment:
+      BACKEND_RABBIT__URL: *rabbit-url
+      BACKEND_S3__ENDPOINT_URL: *s3-endpoint
+      BACKEND_S3__ACCESS_KEY: *s3-access-key
+      BACKEND_S3__SECRET_KEY: *s3-secret-key
+      BACKEND_S3__BUCKET: *s3-bucket
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/docs')"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  cv-service:
+    <<: *app
+    build:
+      context: .
+      target: app
+      args: { PACKAGE: cv-service }
+    image: ai-live-emotions-decode/cv-service
+    container_name: cv-service
+    environment:
+      CV_RABBIT__URL: *rabbit-url
+      CV_S3__ENDPOINT_URL: *s3-endpoint
+      CV_S3__ACCESS_KEY: *s3-access-key
+      CV_S3__SECRET_KEY: *s3-secret-key
+      CV_S3__BUCKET: *s3-bucket
+      # Режим кропа должен совпадать с crop модели ai-service (см. docs/models.md).
+      CV_FACE_CROP: ${CV_FACE_CROP:-yunet5_similarity_v1}
+      CV_SAVE_CROPS: ${CV_SAVE_CROPS:-true}
+
+  ai-service:
+    <<: *app
+    build:
+      context: .
+      target: ai-service
+      args: { PACKAGE: ai-service }
+    image: ai-live-emotions-decode/ai-service
+    container_name: ai-service
+    environment:
+      AI_RABBIT__URL: *rabbit-url
+      AI_S3__ENDPOINT_URL: *s3-endpoint
+      AI_S3__ACCESS_KEY: *s3-access-key
+      AI_S3__SECRET_KEY: *s3-secret-key
+      AI_S3__BUCKET: *s3-bucket
+      AI_EMOTION_MODEL: ${AI_EMOTION_MODEL:-reliable}
+      AI_RELIABILITY_PATH: ${AI_RELIABILITY_PATH:-models/emotion_reliable}
+      AI_EMOTION_MODEL_PATH: ${AI_EMOTION_MODEL_PATH:-models/emotion_experiment/model.onnx}
+
+  notification-service:
+    <<: *app
+    build:
+      context: .
+      target: app
+      args: { PACKAGE: notification-service }
+    image: ai-live-emotions-decode/notification-service
+    container_name: notification-service
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      NOTIFY_RABBIT__URL: *rabbit-url
